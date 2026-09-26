@@ -12,8 +12,10 @@ removed from the orchestrator's choices, however much the others wanted it.
 That asymmetry is deliberate -- hERG is a programme kill criterion in real
 discovery, not a property you trade away for potency.
 
-Each specialist returns {"verdict", "reason", "preferred"}; safety additionally
-returns "vetoed". The orchestrator returns {"chosen", "rationale"}.
+Each specialist returns verdict, reason, preferred molecule, and bounded
+score-separation confidence; safety additionally returns vetoed molecules. The
+orchestrator returns its chosen molecule, rationale, and the same confidence
+metadata.
 """
 
 from __future__ import annotations
@@ -52,6 +54,55 @@ def _axis_score(normalised: dict, axes: tuple[str, ...]) -> float:
 
 def _fmt(value: float) -> str:
     return f"{value:.2f}"
+
+
+def decision_confidence(margin: float) -> float:
+    """Map score separation to a bounded decision-confidence heuristic.
+
+    This describes how decisively an agent's scoring rule separates its choice
+    from the alternatives. It is not calibrated model or experimental
+    uncertainty, so it deliberately tops out below 1.0.
+    """
+    scaled = min(max(float(margin), 0.0) / 0.20, 1.0)
+    return round(0.50 + 0.45 * scaled, 3)
+
+
+def ranked_choice_confidence(candidates, scorer, selected: str,
+                             score_label: str = "score") -> dict:
+    """Confidence metadata for a ranked choice over the candidate set."""
+    chosen = next((candidate for candidate in candidates
+                   if candidate["smiles"] == selected), None)
+    alternatives = [
+        candidate for candidate in candidates if candidate["smiles"] != selected
+    ]
+    if chosen is None:
+        return {
+            "confidence": 0.50,
+            "confidence_basis": "The selected molecule was not in the scored candidate set.",
+        }
+    if not alternatives:
+        return {
+            "confidence": 0.95,
+            "confidence_basis": "Only one eligible candidate was available.",
+        }
+
+    chosen_score = scorer(chosen)
+    runner_up = max(scorer(candidate) for candidate in alternatives)
+    margin = chosen_score - runner_up
+    display_label = (
+        score_label if score_label.isupper() else score_label.title()
+    )
+    if margin >= 0:
+        basis = f"{display_label} leads the next candidate by {_fmt(margin)}."
+    else:
+        basis = (
+            f"The selected candidate trails the {display_label} leader by "
+            f"{_fmt(abs(margin))}; confidence is therefore limited."
+        )
+    return {
+        "confidence": decision_confidence(margin),
+        "confidence_basis": basis,
+    }
 
 
 class Specialist:
@@ -113,6 +164,14 @@ class Specialist:
                 c["smiles"] == preferred for c in candidates
             ):
                 result["preferred"] = preferred
+        result.update(
+            ranked_choice_confidence(
+                candidates,
+                lambda candidate: _axis_score(candidate["normalised"], self.axes),
+                result["preferred"],
+                self.label,
+            )
+        )
         result["agent"] = self.label
         return result
 
@@ -277,12 +336,22 @@ class SafetyAgent:
             if isinstance(reason_text, str) and reason_text.strip():
                 reason = reason_text.strip()
 
+        closest_to_line = min(
+            abs(candidate["normalised"]["herg"] - line)
+            for candidate in candidates
+        )
         return {
             "agent": self.label,
             "verdict": verdict,
             "reason": reason,
             "preferred": best["smiles"],
             "vetoed": vetoed,
+            "confidence": decision_confidence(closest_to_line),
+                "confidence_basis": (
+                    "The closest candidate is "
+                    f"{closest_to_line:.3f} normalized hERG units from the binding "
+                    f"{rule} veto line."
+                ),
         }
 
 
@@ -403,6 +472,8 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
             "held_parent": True,
             "affinity_floor_breached": True,
             "vetoed": sorted(vetoed),
+            "confidence": 0.95,
+            "confidence_basis": "A binding affinity-floor rule determined the outcome.",
         }
 
     if not survivors:
@@ -417,6 +488,8 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
             ),
             "held_parent": True,
             "vetoed": sorted(vetoed),
+            "confidence": 0.95,
+            "confidence_basis": "A binding safety veto removed every candidate.",
         }
 
     ranked = sorted(survivors, key=lambda c: consensus_score(c["normalised"]), reverse=True)
@@ -436,6 +509,8 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
             ),
             "held_parent": True,
             "vetoed": sorted(vetoed),
+            "confidence": 0.95,
+            "confidence_basis": "The incumbent-retention rule determined the outcome.",
         }
 
     # Was the choice forced by the veto? That is the line worth reading aloud.
@@ -495,4 +570,12 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
         pick = payload.get("chosen")
         if isinstance(pick, str) and any(c["smiles"] == pick for c in survivors):
             result["chosen"] = pick
+    result.update(
+        ranked_choice_confidence(
+            survivors,
+            lambda candidate: consensus_score(candidate["normalised"]),
+            result["chosen"],
+            "weighted utility",
+        )
+    )
     return result

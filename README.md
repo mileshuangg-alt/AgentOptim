@@ -36,11 +36,17 @@ round only when the user clicks **Complete round**. It includes:
 - a prominent target, rationale, optimization goal, and hard-constraint panel;
 - PubChem name search with the returned CID and canonical structure;
 - required biological rationale and CNS exposure goal for each new program;
-- RDKit 2D structures and a draggable, zoomable 3D conformer;
+- RDKit 2D structures and a draggable, zoomable explicit-H ball-and-stick model
+  selected from energy-minimized ETKDGv3 conformers;
 - MCS-based highlighting of edited atoms and deletion attachment sites;
 - ADMET changes, agent transcript, and a Pareto front through completed rounds;
-- expandable candidate reviews with each edit and agent-specific rejection;
+- expandable candidate reviews with each edit, agent-specific rejection, and
+  score-separation confidence;
 - wet-lab assay suggestions tied to the predicted property changes.
+
+Agent confidence reports how clearly the agent's scoring rule separates its
+choice from the alternatives in that round. It is bounded at 95% and is not a
+calibrated estimate of model accuracy or experimental success.
 
 For DRD2, the run uses PyTDC when available and otherwise labels the DRD2
 similarity fallback. For every other target, it uses similarity to the selected

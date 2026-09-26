@@ -73,6 +73,13 @@ def test_agents_actually_disagree(run_record):
     assert verdicts - {"support"}, "no agent ever objected or vetoed"
 
 
+def test_every_agent_records_bounded_decision_confidence(run_record):
+    for record in run_record["round_records"]:
+        assessments = [*record["reviews"], record["decision"]]
+        assert all(0.5 <= item["confidence"] <= 0.95 for item in assessments)
+        assert all(item["confidence_basis"].strip() for item in assessments)
+
+
 def test_the_pareto_front_moves(run_record):
     assert run_record["hypervolume_final"] > run_record["hypervolume_initial"]
 

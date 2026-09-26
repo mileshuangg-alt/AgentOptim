@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 from core.drugs import HALOPERIDOL, IBUPROFEN, search
@@ -29,9 +30,27 @@ def test_3d_viewer_has_coordinates_and_precise_change_highlights():
     parent = "c1ccccc1Cl"
     child = "c1ccccc1F"
     payload = molecule_payload(child, parent)
-    assert len(payload["atoms"]) == 7
-    assert 0 < payload["changed_count"] < len(payload["atoms"])
-    assert "canvas" in viewer_html(child, parent)
+    assert payload["heavy_atom_count"] == 7
+    assert len(payload["atoms"]) > payload["heavy_atom_count"]
+    assert payload["geometry"].startswith("ETKDGv3")
+    assert 0 < payload["changed_count"] < payload["heavy_atom_count"]
+    assert all(atom["radius"] > 0 for atom in payload["atoms"])
+    assert all(
+        atom["element"] != "H"
+        for atom in payload["atoms"]
+        if atom["changed"]
+    )
+    for start, end, _order in payload["bonds"]:
+        first, second = payload["atoms"][start], payload["atoms"][end]
+        distance = math.sqrt(
+            (first["x"] - second["x"]) ** 2
+            + (first["y"] - second["y"]) ** 2
+            + (first["z"] - second["z"]) ** 2
+        )
+        assert 0.7 < distance < 2.3
+    html = viewer_html(child, parent)
+    assert "explicit H" in html
+    assert "createRadialGradient" in html
 
 
 def test_candidate_review_explains_changes_and_rejections():
@@ -52,6 +71,8 @@ def test_candidate_review_explains_changes_and_rejections():
         candidate["disposition"] == "Vetoed"
         for candidate in reviews[2]["candidates"]
     )
+    assert all(0.5 <= review["confidence"] <= 0.95 for review in reviews)
+    assert all(review["confidence_basis"] for review in reviews)
 
 
 def test_round_assays_always_start_with_identity_and_purity():

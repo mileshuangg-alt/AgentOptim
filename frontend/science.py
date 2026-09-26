@@ -123,9 +123,46 @@ def candidate_reviews(record: dict, program: dict | None = None) -> list[dict]:
         ("Orchestrator", lambda c: agents.consensus_score(c["normalised"]), "weighted utility"),
     )
     for name, scorer, score_label in definitions:
+        source = record["decision"] if name == "Orchestrator" else reviews.get(name, {})
         preferred = (
-            selected if name == "Orchestrator" else reviews.get(name, {}).get("preferred")
+            selected if name == "Orchestrator" else source.get("preferred")
         )
+        confidence = source.get("confidence")
+        confidence_basis = source.get("confidence_basis")
+        if confidence is None:
+            if name == "Safety":
+                line, rule = agents.SAFETY_AGENT.effective_line(record["parent"])
+                margin = min(
+                    abs(candidate["normalised"]["herg"] - line)
+                    for candidate in candidates
+                )
+                confidence = agents.decision_confidence(margin)
+                confidence_basis = (
+                    f"The closest candidate is {margin:.3f} normalized hERG units "
+                    f"from the binding {rule} veto line."
+                )
+            elif (
+                name == "Orchestrator"
+                and preferred == record["parent"]["smiles"]
+            ):
+                confidence = 0.95
+                confidence_basis = (
+                    "A binding constraint retained the incumbent for this round."
+                )
+            else:
+                confidence_candidates = (
+                    [
+                        candidate for candidate in candidates
+                        if candidate["smiles"] not in vetoed
+                    ]
+                    if name == "Orchestrator"
+                    else candidates
+                )
+                metadata = agents.ranked_choice_confidence(
+                    confidence_candidates, scorer, preferred, score_label
+                )
+                confidence = metadata["confidence"]
+                confidence_basis = metadata["confidence_basis"]
         rows = []
         best_score = max(scorer(candidate) for candidate in candidates)
         for candidate in sorted(candidates, key=scorer, reverse=True):
@@ -164,5 +201,12 @@ def candidate_reviews(record: dict, program: dict | None = None) -> list[dict]:
                     ).strip(),
                 }
             )
-        output.append({"agent": name, "candidates": rows})
+        output.append(
+            {
+                "agent": name,
+                "confidence": confidence,
+                "confidence_basis": confidence_basis,
+                "candidates": rows,
+            }
+        )
     return output

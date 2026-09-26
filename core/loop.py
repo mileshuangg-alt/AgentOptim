@@ -195,6 +195,8 @@ def _generic_decision(parent: dict, candidates: list[dict],
                     "verdict": "support",
                     "reason": "No candidate satisfies the hERG and affinity constraints.",
                     "preferred": parent["smiles"],
+                    "confidence": 0.95,
+                    "confidence_basis": "The binding constraints removed every candidate.",
                 }],
                 {
                     "chosen": parent["smiles"],
@@ -202,6 +204,8 @@ def _generic_decision(parent: dict, candidates: list[dict],
                     "held_parent": True,
                     "forced_second_best": False,
                     "vetoed": vetoed,
+                    "confidence": 0.95,
+                    "confidence_basis": "The binding constraints determined the outcome.",
                 },
             )
 
@@ -248,8 +252,16 @@ def _generic_decision(parent: dict, candidates: list[dict],
             decision["rationale"] = rationale.strip()
             review["reason"] = rationale.strip()
         pick = payload.get("chosen")
-        if isinstance(pick, str) and any(c["smiles"] == pick for c in candidates):
+        if isinstance(pick, str) and any(c["smiles"] == pick for c in pool):
             decision["chosen"] = pick
+    confidence = agents.ranked_choice_confidence(
+        pool,
+        lambda candidate: agents.consensus_score(candidate["normalised"]),
+        decision["chosen"],
+        "weighted utility",
+    )
+    review.update(confidence)
+    decision.update(confidence)
     return [review], decision
 
 

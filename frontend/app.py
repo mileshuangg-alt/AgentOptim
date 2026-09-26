@@ -9,7 +9,6 @@ import tempfile
 from pathlib import Path
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -55,7 +54,10 @@ CSS = """
 .mission-cell p{font-size:.82rem;margin:.25rem 0 0;color:#48564f}
 .mission-cell.constraint p,.mission-cell.constraint .mission-label{color:#9b332e}
 .agent-card{border:1px solid #e1ded4;border-radius:9px;overflow:hidden}
-.agent-title{padding:9px 11px;background:#eff3ef;font-weight:750}
+.agent-title{padding:9px 11px;background:#eff3ef;font-weight:750;
+ display:flex;align-items:center;justify-content:space-between;gap:8px}
+.confidence{display:inline-block;padding:2px 7px;border-radius:20px;background:#dce7df;
+ color:#285e45;font-size:.58rem;font-weight:800;white-space:nowrap}
 details.candidate{border-top:1px solid #ebe8df}
 details.candidate summary{position:relative;list-style:none;cursor:pointer;
  padding:9px 40px 9px 11px}
@@ -92,6 +94,17 @@ def load_run(path: Path) -> dict | None:
         return json.loads(path.read_text())
     except json.JSONDecodeError:
         return None
+
+
+def render_3d_viewer(smiles: str, parent_smiles: str | None = None) -> None:
+    content = viewer_html(smiles, parent_smiles)
+    if hasattr(st, "iframe"):
+        st.iframe(content, height=390)
+        return
+    # Streamlit <1.64 compatibility for existing hackathon environments.
+    import streamlit.components.v1 as components
+
+    components.html(content, height=390)
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -208,25 +221,39 @@ def mission_panel(drug: Drug, program: dict) -> None:
     )
 
 
-def render_transcript(record: dict) -> None:
+def render_transcript(record: dict, program: dict) -> None:
+    confidence_by_agent = {
+        review["agent"]: review for review in candidate_reviews(record, program)
+    }
     for review in record["reviews"]:
         colour, open_mark, close_mark = VERDICT_STYLE.get(
             review["verdict"], ("#333333", "", "")
+        )
+        confidence = confidence_by_agent.get(review["agent"], {})
+        confidence_label = f"{confidence.get('confidence', 0.5):.0%} confidence"
+        confidence_basis = html.escape(
+            confidence.get("confidence_basis", ""), quote=True
         )
         st.markdown(
             f"<div style='border-left:4px solid {colour};padding:.4rem .8rem;"
             f"margin-bottom:.5rem;background:rgba(0,0,0,.02)'>"
             f"<span style='color:{colour};font-weight:600'>"
-            f"{html.escape(review['agent'])} · {review['verdict'].upper()}</span><br>"
+            f"{html.escape(review['agent'])} · {review['verdict'].upper()}</span> "
+            f"<span class='confidence' title='{confidence_basis}'>"
+            f"{confidence_label}</span><br>"
             f"<span style='color:{colour}'>{open_mark}"
             f"{html.escape(review['reason'])}{close_mark}</span></div>",
             unsafe_allow_html=True,
         )
     decision = record["decision"]
+    orchestrator = confidence_by_agent["Orchestrator"]
     st.markdown(
         "<div style='border-left:4px solid #1d3557;padding:.4rem .8rem;"
         "background:rgba(29,53,87,.06)'><b style='color:#1d3557'>"
-        f"Orchestrator</b><br>{html.escape(decision['rationale'])}</div>",
+        f"Orchestrator</b> <span class='confidence' title='"
+        f"{html.escape(orchestrator['confidence_basis'], quote=True)}'>"
+        f"{orchestrator['confidence']:.0%} confidence</span><br>"
+        f"{html.escape(decision['rationale'])}</div>",
         unsafe_allow_html=True,
     )
     if decision.get("forced_second_best"):
@@ -237,11 +264,19 @@ def render_candidate_review(record: dict, program: dict) -> None:
     st.subheader("Candidate review by agent")
     st.caption(
         "Expand a candidate to see its structural edit and why that agent "
-        "preferred, rejected, vetoed, or declined to select it."
+        "preferred, rejected, vetoed, or declined to select it. Confidence "
+        "measures score separation within this batch; it is not calibrated "
+        "experimental uncertainty."
     )
     columns = st.columns(4)
     for column, review in zip(columns, candidate_reviews(record, program)):
-        chunks = [f"<div class='agent-card'><div class='agent-title'>{review['agent']}</div>"]
+        confidence_basis = html.escape(review["confidence_basis"], quote=True)
+        chunks = [
+            "<div class='agent-card'><div class='agent-title'>"
+            f"<span>{html.escape(review['agent'])}</span>"
+            f"<span class='confidence' title='{confidence_basis}'>"
+            f"{review['confidence']:.0%} confidence</span></div>"
+        ]
         for candidate in review["candidates"]:
             disposition = candidate["disposition"].lower()
             chunks.append(
@@ -490,7 +525,7 @@ def main() -> None:
             st.image(molecule_image(drug.smiles))
         with right:
             st.subheader("Interactive 3D structure")
-            components.html(viewer_html(drug.smiles), height=390)
+            render_3d_viewer(drug.smiles)
         return
 
     run_record = st.session_state["run"]
@@ -512,7 +547,7 @@ def main() -> None:
             st.pyplot(score_bars_figure(seed, labels=labels))
         with right:
             st.subheader("Interactive 3D structure")
-            components.html(viewer_html(seed["smiles"]), height=390)
+            render_3d_viewer(seed["smiles"])
         if st.button("Complete round 1 →", type="primary"):
             st.session_state["completed_rounds"] = 1
             st.session_state["selected_round"] = 1
@@ -546,10 +581,7 @@ def main() -> None:
         )
     with viewer:
         st.markdown("**Interactive 3D structure**")
-        components.html(
-            viewer_html(chosen["smiles"], record["parent"]["smiles"]),
-            height=390,
-        )
+        render_3d_viewer(chosen["smiles"], record["parent"]["smiles"])
         st.caption(
             "Amber marks changed atoms or the surviving attachment site of a "
             "removed atom. Drag to rotate; scroll to zoom."
@@ -561,7 +593,10 @@ def main() -> None:
         st.pyplot(score_bars_figure(chosen, record["parent"], labels=labels))
     with transcript:
         st.subheader("Agent deliberation")
-        render_transcript(record)
+        st.caption(
+            "Confidence is relative to the alternatives scored in this round."
+        )
+        render_transcript(record, run_program)
 
     render_candidate_review(record, run_program)
     render_assays(record, run_program)

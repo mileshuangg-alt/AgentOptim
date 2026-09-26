@@ -228,10 +228,19 @@ def test_every_specialist_returns_the_contract_keys(monkeypatch):
     candidates = [_candidate("CCC"), _candidate("CCCC", affinity=0.9)]
     for specialist in agents.SPECIALISTS:
         review = specialist.review(parent, candidates, candidates[1])
-        assert {"verdict", "reason", "preferred"} <= set(review)
+        assert {
+            "verdict", "reason", "preferred", "confidence", "confidence_basis"
+        } <= set(review)
         assert review["verdict"] in ("support", "object", "veto")
         assert review["preferred"] in ("CCC", "CCCC")
         assert review["reason"].strip()
+        assert 0.5 <= review["confidence"] <= 0.95
+        assert review["confidence_basis"].strip()
+
+
+def test_agent_confidence_increases_with_score_separation():
+    assert agents.decision_confidence(0.15) > agents.decision_confidence(0.02)
+    assert agents.decision_confidence(1.0) == 0.95
 
 
 # --- fixtures --------------------------------------------------------------
