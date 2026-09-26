@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRD2 Lead Optimization</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <span class="eyebrow">MULTI-AGENT LEAD OPTIMIZATION</span>
+      <h1 id="councilTitle">DRD2 Safety Council</h1>
+      <div class="seed-line">Starting drug: <strong id="seedName">Haloperidol</strong></div>
+    </div>
+    <button id="replay">Reset demo</button>
+  </header>
+  <div id="notice"></div>
+  <main>
+    <section class="drug-search card">
+      <div>
+        <span class="eyebrow">STARTING COMPOUND LOOKUP</span>
+        <h2>Find a drug</h2>
+        <p>Search the bundled compound index by generic or brand name.</p>
+        <form id="drugSearch">
+          <input id="drugQuery" value="Haloperidol" aria-label="Drug name">
+          <button type="submit">Search</button>
+        </form>
+        <div id="searchMessage"></div>
+      </div>
+      <div id="drugResult" class="drug-result">
+        <img id="drugStructure" alt="2D structure of Haloperidol">
+        <div>
+          <h3 id="drugName">Haloperidol</h3>
+          <span id="drugTarget" class="target-pill">DRD2</span>
+          <code id="drugSmiles"></code>
+          <button id="runDrug">Run five optimization rounds</button>
+        </div>
+      </div>
+    </section>
+    <section class="mission card">
+      <div><span class="mission-label">TARGET</span><h2 id="missionTarget">DRD2</h2></div>
+      <div><span class="mission-label">WHY THIS TARGET</span><p id="targetRationale"></p></div>
+      <div><span class="mission-label">OPTIMIZATION GOAL</span><p id="optimizationGoal"></p></div>
+      <div class="constraint"><span class="mission-label">HARD CONSTRAINT</span><p id="hardConstraint"></p></div>
+    </section>
+    <section class="hero card">
+      <div class="round-label" id="roundLabel"></div>
+      <div id="molecule" class="molecule"></div>
+      <div>
+        <h2 id="candidateName"></h2>
+        <div class="candidate-id" id="candidateId"></div>
+        <code id="smiles"></code>
+      </div>
+    </section>
+    <section class="card viewer-card">
+      <div class="viewer-heading">
+        <div><h2>Interactive 3D structure</h2><span>Drag to rotate · scroll to zoom</span></div>
+        <div class="viewer-legend"><i></i>Changed atoms</div>
+      </div>
+      <canvas id="molecule3d" aria-label="Interactive three-dimensional molecular structure"></canvas>
+      <div id="viewerNote" class="panel-note"></div>
+    </section>
+    <nav class="round-nav card" aria-label="Optimization rounds">
+      <button class="nav-button" id="previous">← Previous</button>
+      <div id="roundButtons" class="round-buttons"></div>
+      <button class="nav-button advance" id="next">Complete round 1 →</button>
+    </nav>
+    <section class="card scores">
+      <h2>ADMET & optimization profile</h2>
+      <div class="panel-note">Normalized surrogate scores · higher is better</div>
+      <div id="scores"></div>
+      <div class="admet-key">
+        <div><b>Solubility</b><span>Aqueous developability</span></div>
+        <div><b>BBB</b><span>Brain penetration</span></div>
+        <div><b>hERG safety</b><span>Lower cardiac blockade risk</span></div>
+        <div><b>Affinity</b><span>Predicted DRD2 potency</span></div>
+        <div><b>SA</b><span>Synthetic accessibility</span></div>
+      </div>
+    </section>
+    <section class="card changes">
+      <h2>What changed</h2>
+      <div class="change-route">
+        <span>Parent</span><code id="parentSmiles"></code><i>→</i>
+        <span>Selected analogue</span>
+      </div>
+      <div id="changeNotes"></div>
+    </section>
+    <section class="card assays">
+      <div class="assay-heading">
+        <div><h2>Suggested wet-lab verification</h2><div class="panel-note">Experiments selected from this round’s predicted changes</div></div>
+        <span>Decision support</span>
+      </div>
+      <div id="assayList"></div>
+    </section>
+    <section class="card transcript"><h2>Agent deliberation</h2><div id="transcript"></div></section>
+    <section class="card candidate-review">
+      <div class="review-heading">
+        <div><h2>Candidate review by agent</h2><div class="panel-note">Every candidate considered in this round and its final disposition · confidence reflects score separation within this batch</div></div>
+        <div class="review-key"><span class="mini preferred">Preferred</span><span class="mini vetoed">Vetoed</span><span class="mini considered">Considered</span></div>
+      </div>
+      <div id="agentCandidateReview" class="review-grid"></div>
+    </section>
+  </main>
+  <footer><span id="status"></span><span>Manual round review · predictions require wet-lab validation</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>

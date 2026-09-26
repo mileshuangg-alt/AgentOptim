@@ -1,0 +1,4597 @@
+{
+  "schema_version": "1.0",
+  "mode": "deterministic-agents-surrogate-oracles",
+  "target": "COX-1 / COX-2",
+  "seed_name": "Ibuprofen",
+  "seed": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+  "seed_structure_3d": {
+    "atoms": [
+      {
+        "element": "C",
+        "x": -3.3881,
+        "y": 1.655,
+        "z": -0.0877,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": -2.891,
+        "y": 0.2754,
+        "z": -0.5264,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": -3.7201,
+        "y": -0.8352,
+        "z": 0.1236,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": -1.4089,
+        "y": 0.1018,
+        "z": -0.2471,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": -0.8939,
+        "y": 0.1413,
+        "z": 1.0557,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": 0.4747,
+        "y": -0.0202,
+        "z": 1.2903,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": 1.3638,
+        "y": -0.2267,
+        "z": 0.2275,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": 0.8501,
+        "y": -0.2638,
+        "z": -1.0762,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": -0.5184,
+        "y": -0.1021,
+        "z": -1.3095,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": 2.8465,
+        "y": -0.4001,
+        "z": 0.5001,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": 3.3493,
+        "y": -1.7798,
+        "z": 0.0693,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "C",
+        "x": 3.6714,
+        "y": 0.6901,
+        "z": -0.1583,
+        "radius": 0.76,
+        "changed": false
+      },
+      {
+        "element": "O",
+        "x": 4.184,
+        "y": 0.6584,
+        "z": -1.2661,
+        "radius": 0.66,
+        "changed": false
+      },
+      {
+        "element": "O",
+        "x": 3.7986,
+        "y": 1.7891,
+        "z": 0.6153,
+        "radius": 0.66,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -4.4367,
+        "y": 1.7945,
+        "z": -0.3721,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -3.3174,
+        "y": 1.7905,
+        "z": 0.997,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -2.8034,
+        "y": 2.4509,
+        "z": -0.5623,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -3.0526,
+        "y": 0.2047,
+        "z": -1.6103,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -3.6638,
+        "y": -0.8024,
+        "z": 1.2171,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -4.7748,
+        "y": -0.7426,
+        "z": -0.1575,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -3.3727,
+        "y": -1.823,
+        "z": -0.1991,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -1.5546,
+        "y": 0.3,
+        "z": 1.9049,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 0.8387,
+        "y": 0.0194,
+        "z": 2.3149,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 1.5117,
+        "y": -0.4152,
+        "z": -1.9277,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": -0.8822,
+        "y": -0.1358,
+        "z": -2.3343,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 3.0322,
+        "y": -0.3281,
+        "z": 1.5806,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 4.41,
+        "y": -1.8978,
+        "z": 0.3179,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 3.2506,
+        "y": -1.9366,
+        "z": -1.0106,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 2.7916,
+        "y": -2.5756,
+        "z": 0.5752,
+        "radius": 0.31,
+        "changed": false
+      },
+      {
+        "element": "H",
+        "x": 4.3055,
+        "y": 2.4139,
+        "z": 0.0559,
+        "radius": 0.31,
+        "changed": false
+      }
+    ],
+    "bonds": [
+      [
+        0,
+        1,
+        1.0
+      ],
+      [
+        1,
+        2,
+        1.0
+      ],
+      [
+        1,
+        3,
+        1.0
+      ],
+      [
+        3,
+        4,
+        1.5
+      ],
+      [
+        4,
+        5,
+        1.5
+      ],
+      [
+        5,
+        6,
+        1.5
+      ],
+      [
+        6,
+        7,
+        1.5
+      ],
+      [
+        7,
+        8,
+        1.5
+      ],
+      [
+        6,
+        9,
+        1.0
+      ],
+      [
+        9,
+        10,
+        1.0
+      ],
+      [
+        9,
+        11,
+        1.0
+      ],
+      [
+        11,
+        12,
+        2.0
+      ],
+      [
+        11,
+        13,
+        1.0
+      ],
+      [
+        8,
+        3,
+        1.5
+      ],
+      [
+        0,
+        14,
+        1.0
+      ],
+      [
+        0,
+        15,
+        1.0
+      ],
+      [
+        0,
+        16,
+        1.0
+      ],
+      [
+        1,
+        17,
+        1.0
+      ],
+      [
+        2,
+        18,
+        1.0
+      ],
+      [
+        2,
+        19,
+        1.0
+      ],
+      [
+        2,
+        20,
+        1.0
+      ],
+      [
+        4,
+        21,
+        1.0
+      ],
+      [
+        5,
+        22,
+        1.0
+      ],
+      [
+        7,
+        23,
+        1.0
+      ],
+      [
+        8,
+        24,
+        1.0
+      ],
+      [
+        9,
+        25,
+        1.0
+      ],
+      [
+        10,
+        26,
+        1.0
+      ],
+      [
+        10,
+        27,
+        1.0
+      ],
+      [
+        10,
+        28,
+        1.0
+      ],
+      [
+        13,
+        29,
+        1.0
+      ]
+    ],
+    "formula": "C12H16O2",
+    "geometry": "ETKDGv3 + MMFF94s",
+    "changed_count": 0
+  },
+  "seed_scores": {
+    "affinity": 0.668,
+    "solubility": 0.694,
+    "bbb": 0.686,
+    "herg": 0.385,
+    "sa": 0.657
+  },
+  "target_rationale": "COX-1 and COX-2 catalyze prostaglandin synthesis; Ibuprofen is a clinically familiar anti-inflammatory starting scaffold.",
+  "optimization_goal": "Preserve COX inhibition while improving solubility, cardiac safety, and synthetic accessibility.",
+  "hard_constraint": "Candidates below normalized hERG safety 0.35 are vetoed.",
+  "oracle_notice": "Demo-only structural heuristics are active; scores are not validated scientific predictions.",
+  "rounds": [
+    {
+      "round": 1,
+      "parent": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+      "candidates": [
+        {
+          "id": "r1-c1",
+          "display_name": "Ibuprofen analogue R1.1",
+          "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.68,
+            "solubility": 0.747,
+            "bbb": 0.651,
+            "herg": 0.452,
+            "sa": 0.76
+          },
+          "composite": 0.6544
+        },
+        {
+          "id": "r1-c2",
+          "display_name": "Ibuprofen analogue R1.2",
+          "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+          "scores": {
+            "affinity": 0.596,
+            "solubility": 0.726,
+            "bbb": 0.608,
+            "herg": 0.488,
+            "sa": 0.688
+          },
+          "composite": 0.6139
+        },
+        {
+          "id": "r1-c3",
+          "display_name": "Ibuprofen analogue R1.3",
+          "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+          "scores": {
+            "affinity": 0.654,
+            "solubility": 0.756,
+            "bbb": 0.672,
+            "herg": 0.459,
+            "sa": 0.734
+          },
+          "composite": 0.6509
+        },
+        {
+          "id": "r1-c4",
+          "display_name": "Ibuprofen analogue R1.4",
+          "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+          "scores": {
+            "affinity": 0.727,
+            "solubility": 0.695,
+            "bbb": 0.652,
+            "herg": 0.417,
+            "sa": 0.741
+          },
+          "composite": 0.6509
+        },
+        {
+          "id": "r1-c5",
+          "display_name": "Ibuprofen analogue R1.5",
+          "smiles": "CC(C)c1ccc(C)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.665,
+            "solubility": 0.632,
+            "bbb": 0.612,
+            "herg": 0.469,
+            "sa": 0.666
+          },
+          "composite": 0.6124
+        }
+      ],
+      "transcript": [
+        {
+          "agent": "affinity",
+          "verdict": "support",
+          "preferred_id": "r1-c4",
+          "preferred": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+          "reason": "Support r1-c4: affinity 0.73 is the strongest COX-1 / COX-2 surrogate score in this batch.",
+          "source": "deterministic",
+          "confidence": 0.606,
+          "confidence_basis": "Affinity leads the next candidate by 0.05."
+        },
+        {
+          "agent": "adme",
+          "verdict": "support",
+          "preferred_id": "r1-c3",
+          "preferred": "CC(C)c1ccc(cc1)CC(=O)O",
+          "reason": "Support r1-c3: it best balances BBB 0.67 with solubility 0.76.",
+          "source": "deterministic",
+          "confidence": 0.534,
+          "confidence_basis": "ADME leads the next candidate by 0.02."
+        },
+        {
+          "agent": "safety",
+          "verdict": "object",
+          "reason": "r1-c2 is safest, but its hERG score 0.49 remains in the caution band.",
+          "preferred": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+          "preferred_id": "r1-c2",
+          "vetoed_ids": [],
+          "confidence": 0.651,
+          "confidence_basis": "The closest candidate is 0.067 normalized hERG units from the binding veto line."
+        },
+        {
+          "agent": "orchestrator",
+          "status": "ok",
+          "chosen_id": "r1-c4",
+          "chosen": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+          "rationale": "Choose r1-c4 after balancing potency, CNS exposure, solubility, cardiac safety, and synthesis. The specialists preferred different candidates.",
+          "source": "deterministic",
+          "confidence": 0.5,
+          "confidence_basis": "The selected candidate trails the composite utility leader by 0.00; confidence is limited."
+        }
+      ],
+      "winner": {
+        "id": "r1-c4",
+        "display_name": "Ibuprofen analogue R1.4",
+        "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+        "scores": {
+          "affinity": 0.727,
+          "solubility": 0.695,
+          "bbb": 0.652,
+          "herg": 0.417,
+          "sa": 0.741
+        },
+        "composite": 0.6509
+      },
+      "changes": {
+        "structural": [
+          "Added 1 fluorine substituent."
+        ],
+        "outcome": [
+          "Improved sa (+0.08), affinity (+0.06), herg (+0.03), solubility (+0.00).",
+          "Reduced bbb (-0.03)."
+        ],
+        "deltas": {
+          "affinity": 0.059,
+          "solubility": 0.001,
+          "bbb": -0.034,
+          "herg": 0.032,
+          "sa": 0.084
+        }
+      },
+      "recommended_assays": [
+        {
+          "assay": "LC\u2013MS identity and purity",
+          "purpose": "Confirm the synthesized analogue and exclude impurities before biological testing.",
+          "readout": "Expected mass, retention profile, and purity.",
+          "priority": "Required"
+        },
+        {
+          "assay": "Small-scale synthesis feasibility review",
+          "purpose": "Validate the synthetic-accessibility prediction and identify unstable intermediates.",
+          "readout": "Route length, isolated yield, purity, and observed handling issues.",
+          "priority": "Supporting"
+        },
+        {
+          "assay": "COX-1 / COX-2 enzyme inhibition",
+          "purpose": "Measure whether the structural edit preserved cyclooxygenase inhibition and its isoform profile.",
+          "readout": "COX-1 and COX-2 concentration\u2013response IC\u2085\u2080 values.",
+          "priority": "High"
+        },
+        {
+          "assay": "PAMPA-BBB or MDCK-MDR1 permeability",
+          "purpose": "Test passive brain penetration and identify possible efflux liability.",
+          "readout": "Apparent permeability and, for MDCK-MDR1, efflux ratio.",
+          "priority": "Medium"
+        }
+      ],
+      "agent_candidate_review": [
+        {
+          "agent": "Affinity",
+          "confidence": 0.606,
+          "confidence_basis": "Affinity leads the next candidate by 0.05.",
+          "candidates": [
+            {
+              "id": "r1-c4",
+              "display_name": "Ibuprofen analogue R1.4",
+              "disposition": "preferred",
+              "summary": "Affinity 0.73",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Highest predicted target-affinity score in the batch."
+            },
+            {
+              "id": "r1-c1",
+              "display_name": "Ibuprofen analogue R1.1",
+              "disposition": "considered",
+              "summary": "Affinity 0.68",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r1-c5",
+              "display_name": "Ibuprofen analogue R1.5",
+              "disposition": "considered",
+              "summary": "Affinity 0.67",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.06 below this agent's leading candidate."
+            },
+            {
+              "id": "r1-c3",
+              "display_name": "Ibuprofen analogue R1.3",
+              "disposition": "considered",
+              "summary": "Affinity 0.65",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.07 below this agent's leading candidate."
+            },
+            {
+              "id": "r1-c2",
+              "display_name": "Ibuprofen analogue R1.2",
+              "disposition": "considered",
+              "summary": "Affinity 0.60",
+              "change": "Added 1 amine nitrogen.",
+              "reason": "Not preferred: affinity is 0.13 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "ADME",
+          "confidence": 0.534,
+          "confidence_basis": "ADME leads the next candidate by 0.02.",
+          "candidates": [
+            {
+              "id": "r1-c3",
+              "display_name": "Ibuprofen analogue R1.3",
+              "disposition": "preferred",
+              "summary": "BBB 0.67 \u00b7 Solubility 0.76",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Best combined BBB and solubility balance in the batch."
+            },
+            {
+              "id": "r1-c1",
+              "display_name": "Ibuprofen analogue R1.1",
+              "disposition": "considered",
+              "summary": "BBB 0.65 \u00b7 Solubility 0.75",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r1-c4",
+              "display_name": "Ibuprofen analogue R1.4",
+              "disposition": "considered",
+              "summary": "BBB 0.65 \u00b7 Solubility 0.69",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Not preferred: combined ADME score is 0.04 below this agent's leading candidate."
+            },
+            {
+              "id": "r1-c2",
+              "display_name": "Ibuprofen analogue R1.2",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.73",
+              "change": "Added 1 amine nitrogen.",
+              "reason": "Not preferred: combined ADME score is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r1-c5",
+              "display_name": "Ibuprofen analogue R1.5",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.63",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.09 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "Safety",
+          "confidence": 0.651,
+          "confidence_basis": "The closest candidate is 0.067 normalized hERG units from the binding veto line.",
+          "candidates": [
+            {
+              "id": "r1-c2",
+              "display_name": "Ibuprofen analogue R1.2",
+              "disposition": "preferred",
+              "summary": "hERG safety 0.49",
+              "change": "Added 1 amine nitrogen.",
+              "reason": "Safest surviving candidate in this batch."
+            },
+            {
+              "id": "r1-c5",
+              "display_name": "Ibuprofen analogue R1.5",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.47",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r1-c3",
+              "display_name": "Ibuprofen analogue R1.3",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.46",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r1-c1",
+              "display_name": "Ibuprofen analogue R1.1",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.45",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r1-c4",
+              "display_name": "Ibuprofen analogue R1.4",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.42",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            }
+          ]
+        },
+        {
+          "agent": "Orchestrator",
+          "confidence": 0.5,
+          "confidence_basis": "The selected candidate trails the composite utility leader by 0.00; confidence is limited.",
+          "candidates": [
+            {
+              "id": "r1-c1",
+              "display_name": "Ibuprofen analogue R1.1",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not selected: a near-tied composite score received less specialist support than the winner."
+            },
+            {
+              "id": "r1-c3",
+              "display_name": "Ibuprofen analogue R1.3",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Not selected: a near-tied composite score received less specialist support than the winner."
+            },
+            {
+              "id": "r1-c4",
+              "display_name": "Ibuprofen analogue R1.4",
+              "disposition": "selected",
+              "summary": "Composite 0.65",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Selected as the strongest viable multi-property trade-off."
+            },
+            {
+              "id": "r1-c2",
+              "display_name": "Ibuprofen analogue R1.2",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Added 1 amine nitrogen.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            },
+            {
+              "id": "r1-c5",
+              "display_name": "Ibuprofen analogue R1.5",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            }
+          ]
+        }
+      ],
+      "structure_3d": {
+        "atoms": [
+          {
+            "element": "C",
+            "x": -2.9541,
+            "y": -1.147,
+            "z": 1.0341,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -2.5662,
+            "y": 0.1798,
+            "z": 0.3767,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -3.3783,
+            "y": 0.4142,
+            "z": -0.8995,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -1.0732,
+            "y": 0.2548,
+            "z": 0.1104,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.4333,
+            "y": -0.6403,
+            "z": -0.7584,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 0.9425,
+            "y": -0.5542,
+            "z": -0.989,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.7119,
+            "y": 0.4305,
+            "z": -0.3546,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.0751,
+            "y": 1.3237,
+            "z": 0.5163,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.3008,
+            "y": 1.2375,
+            "z": 0.7447,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 3.2052,
+            "y": 0.5267,
+            "z": -0.593,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "F",
+            "x": 3.6939,
+            "y": 1.766,
+            "z": -0.2587,
+            "radius": 0.57,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 3.9746,
+            "y": -0.5915,
+            "z": 0.1061,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 3.7475,
+            "y": -1.7919,
+            "z": 0.036,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 5.0298,
+            "y": -0.162,
+            "z": 0.8339,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.0179,
+            "y": -1.1505,
+            "z": 1.2953,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.3824,
+            "y": -1.3096,
+            "z": 1.9547,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.7716,
+            "y": -2.001,
+            "z": 0.3728,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.8358,
+            "y": 0.9786,
+            "z": 1.0804,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.1096,
+            "y": 1.3693,
+            "z": -1.3646,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.4499,
+            "y": 0.4409,
+            "z": -0.6741,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.2145,
+            "y": -0.3757,
+            "z": -1.6407,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -1.0007,
+            "y": -1.419,
+            "z": -1.2635,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.4087,
+            "y": -1.2717,
+            "z": -1.6621,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.6488,
+            "y": 2.0992,
+            "z": 1.0217,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -0.7645,
+            "y": 1.9484,
+            "z": 1.4254,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.4026,
+            "y": 0.4238,
+            "z": -1.6662,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 5.412,
+            "y": -0.979,
+            "z": 1.2157,
+            "radius": 0.31,
+            "changed": false
+          }
+        ],
+        "bonds": [
+          [
+            0,
+            1,
+            1.0
+          ],
+          [
+            1,
+            2,
+            1.0
+          ],
+          [
+            1,
+            3,
+            1.0
+          ],
+          [
+            3,
+            4,
+            1.5
+          ],
+          [
+            4,
+            5,
+            1.5
+          ],
+          [
+            5,
+            6,
+            1.5
+          ],
+          [
+            6,
+            7,
+            1.5
+          ],
+          [
+            7,
+            8,
+            1.5
+          ],
+          [
+            6,
+            9,
+            1.0
+          ],
+          [
+            9,
+            10,
+            1.0
+          ],
+          [
+            9,
+            11,
+            1.0
+          ],
+          [
+            11,
+            12,
+            2.0
+          ],
+          [
+            11,
+            13,
+            1.0
+          ],
+          [
+            8,
+            3,
+            1.5
+          ],
+          [
+            0,
+            14,
+            1.0
+          ],
+          [
+            0,
+            15,
+            1.0
+          ],
+          [
+            0,
+            16,
+            1.0
+          ],
+          [
+            1,
+            17,
+            1.0
+          ],
+          [
+            2,
+            18,
+            1.0
+          ],
+          [
+            2,
+            19,
+            1.0
+          ],
+          [
+            2,
+            20,
+            1.0
+          ],
+          [
+            4,
+            21,
+            1.0
+          ],
+          [
+            5,
+            22,
+            1.0
+          ],
+          [
+            7,
+            23,
+            1.0
+          ],
+          [
+            8,
+            24,
+            1.0
+          ],
+          [
+            9,
+            25,
+            1.0
+          ],
+          [
+            13,
+            26,
+            1.0
+          ]
+        ],
+        "formula": "C11H13FO2",
+        "geometry": "ETKDGv3 + MMFF94s",
+        "changed_count": 2
+      },
+      "previous_scores": {
+        "affinity": 0.668,
+        "solubility": 0.694,
+        "bbb": 0.686,
+        "herg": 0.385,
+        "sa": 0.657
+      }
+    },
+    {
+      "round": 2,
+      "parent": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+      "candidates": [
+        {
+          "id": "r2-c1",
+          "display_name": "Ibuprofen analogue R2.1",
+          "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.68,
+            "solubility": 0.747,
+            "bbb": 0.651,
+            "herg": 0.452,
+            "sa": 0.76
+          },
+          "composite": 0.6544
+        },
+        {
+          "id": "r2-c2",
+          "display_name": "Ibuprofen analogue R2.2",
+          "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+          "scores": {
+            "affinity": 0.596,
+            "solubility": 0.726,
+            "bbb": 0.608,
+            "herg": 0.488,
+            "sa": 0.688
+          },
+          "composite": 0.6139
+        },
+        {
+          "id": "r2-c3",
+          "display_name": "Ibuprofen analogue R2.3",
+          "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.668,
+            "solubility": 0.694,
+            "bbb": 0.686,
+            "herg": 0.385,
+            "sa": 0.657
+          },
+          "composite": 0.6246
+        },
+        {
+          "id": "r2-c4",
+          "display_name": "Ibuprofen analogue R2.4",
+          "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+          "scores": {
+            "affinity": 0.654,
+            "solubility": 0.756,
+            "bbb": 0.672,
+            "herg": 0.459,
+            "sa": 0.734
+          },
+          "composite": 0.6509
+        },
+        {
+          "id": "r2-c5",
+          "display_name": "Ibuprofen analogue R2.5",
+          "smiles": "CC(C)c1ccc(C)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.665,
+            "solubility": 0.632,
+            "bbb": 0.612,
+            "herg": 0.469,
+            "sa": 0.666
+          },
+          "composite": 0.6124
+        }
+      ],
+      "transcript": [
+        {
+          "agent": "affinity",
+          "verdict": "support",
+          "preferred_id": "r2-c1",
+          "preferred": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+          "reason": "Support r2-c1: affinity 0.68 is the strongest COX-1 / COX-2 surrogate score in this batch.",
+          "source": "deterministic",
+          "confidence": 0.527,
+          "confidence_basis": "Affinity leads the next candidate by 0.01."
+        },
+        {
+          "agent": "adme",
+          "verdict": "support",
+          "preferred_id": "r2-c4",
+          "preferred": "CC(C)c1ccc(cc1)CC(=O)O",
+          "reason": "Support r2-c4: it best balances BBB 0.67 with solubility 0.76.",
+          "source": "deterministic",
+          "confidence": 0.534,
+          "confidence_basis": "ADME leads the next candidate by 0.02."
+        },
+        {
+          "agent": "safety",
+          "verdict": "object",
+          "reason": "r2-c2 is safest, but its hERG score 0.49 remains in the caution band.",
+          "preferred": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+          "preferred_id": "r2-c2",
+          "vetoed_ids": [],
+          "confidence": 0.579,
+          "confidence_basis": "The closest candidate is 0.035 normalized hERG units from the binding veto line."
+        },
+        {
+          "agent": "orchestrator",
+          "status": "ok",
+          "chosen_id": "r2-c1",
+          "chosen": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+          "rationale": "Choose r2-c1 after balancing potency, CNS exposure, solubility, cardiac safety, and synthesis. The specialists preferred different candidates.",
+          "source": "deterministic",
+          "confidence": 0.508,
+          "confidence_basis": "Composite utility leads the next candidate by 0.00."
+        }
+      ],
+      "winner": {
+        "id": "r2-c1",
+        "display_name": "Ibuprofen analogue R2.1",
+        "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+        "scores": {
+          "affinity": 0.68,
+          "solubility": 0.747,
+          "bbb": 0.651,
+          "herg": 0.452,
+          "sa": 0.76
+        },
+        "composite": 0.6544
+      },
+      "changes": {
+        "structural": [
+          "Removed 1 fluorine substituent.",
+          "Added 1 oxygen functionality.",
+          "Expanded the molecular scaffold."
+        ],
+        "outcome": [
+          "Improved solubility (+0.05), herg (+0.04), sa (+0.02).",
+          "Reduced affinity (-0.05), bbb (-0.00)."
+        ],
+        "deltas": {
+          "affinity": -0.047,
+          "solubility": 0.052,
+          "bbb": -0.001,
+          "herg": 0.035,
+          "sa": 0.019
+        }
+      },
+      "recommended_assays": [
+        {
+          "assay": "LC\u2013MS identity and purity",
+          "purpose": "Confirm the synthesized analogue and exclude impurities before biological testing.",
+          "readout": "Expected mass, retention profile, and purity.",
+          "priority": "Required"
+        },
+        {
+          "assay": "Kinetic and equilibrium solubility",
+          "purpose": "Check whether the analogue remains soluble under assay-relevant conditions.",
+          "readout": "Concentration in solution by LC\u2013MS across relevant pH conditions.",
+          "priority": "Medium"
+        },
+        {
+          "assay": "COX-1 / COX-2 enzyme inhibition",
+          "purpose": "Measure whether the structural edit preserved cyclooxygenase inhibition and its isoform profile.",
+          "readout": "COX-1 and COX-2 concentration\u2013response IC\u2085\u2080 values.",
+          "priority": "High"
+        },
+        {
+          "assay": "Automated hERG patch clamp",
+          "purpose": "Verify that the predicted cardiac-safety improvement reflects lower channel blockade.",
+          "readout": "hERG current inhibition and concentration\u2013response IC\u2085\u2080.",
+          "priority": "High"
+        }
+      ],
+      "agent_candidate_review": [
+        {
+          "agent": "Affinity",
+          "confidence": 0.527,
+          "confidence_basis": "Affinity leads the next candidate by 0.01.",
+          "candidates": [
+            {
+              "id": "r2-c1",
+              "display_name": "Ibuprofen analogue R2.1",
+              "disposition": "preferred",
+              "summary": "Affinity 0.68",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Highest predicted target-affinity score in the batch."
+            },
+            {
+              "id": "r2-c3",
+              "display_name": "Ibuprofen analogue R2.3",
+              "disposition": "considered",
+              "summary": "Affinity 0.67",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not preferred: affinity is 0.01 below this agent's leading candidate."
+            },
+            {
+              "id": "r2-c5",
+              "display_name": "Ibuprofen analogue R2.5",
+              "disposition": "considered",
+              "summary": "Affinity 0.67",
+              "change": "Removed 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r2-c4",
+              "display_name": "Ibuprofen analogue R2.4",
+              "disposition": "considered",
+              "summary": "Affinity 0.65",
+              "change": "Removed 1 fluorine substituent. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.03 below this agent's leading candidate."
+            },
+            {
+              "id": "r2-c2",
+              "display_name": "Ibuprofen analogue R2.2",
+              "disposition": "considered",
+              "summary": "Affinity 0.60",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Not preferred: affinity is 0.08 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "ADME",
+          "confidence": 0.534,
+          "confidence_basis": "ADME leads the next candidate by 0.02.",
+          "candidates": [
+            {
+              "id": "r2-c4",
+              "display_name": "Ibuprofen analogue R2.4",
+              "disposition": "preferred",
+              "summary": "BBB 0.67 \u00b7 Solubility 0.76",
+              "change": "Removed 1 fluorine substituent. Shortened or simplified the molecular scaffold.",
+              "reason": "Best combined BBB and solubility balance in the batch."
+            },
+            {
+              "id": "r2-c1",
+              "display_name": "Ibuprofen analogue R2.1",
+              "disposition": "considered",
+              "summary": "BBB 0.65 \u00b7 Solubility 0.75",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r2-c3",
+              "display_name": "Ibuprofen analogue R2.3",
+              "disposition": "considered",
+              "summary": "BBB 0.69 \u00b7 Solubility 0.69",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r2-c2",
+              "display_name": "Ibuprofen analogue R2.2",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.73",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Not preferred: combined ADME score is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r2-c5",
+              "display_name": "Ibuprofen analogue R2.5",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.63",
+              "change": "Removed 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.09 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "Safety",
+          "confidence": 0.579,
+          "confidence_basis": "The closest candidate is 0.035 normalized hERG units from the binding veto line.",
+          "candidates": [
+            {
+              "id": "r2-c2",
+              "display_name": "Ibuprofen analogue R2.2",
+              "disposition": "preferred",
+              "summary": "hERG safety 0.49",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Safest surviving candidate in this batch."
+            },
+            {
+              "id": "r2-c5",
+              "display_name": "Ibuprofen analogue R2.5",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.47",
+              "change": "Removed 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r2-c4",
+              "display_name": "Ibuprofen analogue R2.4",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.46",
+              "change": "Removed 1 fluorine substituent. Shortened or simplified the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r2-c1",
+              "display_name": "Ibuprofen analogue R2.1",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.45",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r2-c3",
+              "display_name": "Ibuprofen analogue R2.3",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.39",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            }
+          ]
+        },
+        {
+          "agent": "Orchestrator",
+          "confidence": 0.508,
+          "confidence_basis": "Composite utility leads the next candidate by 0.00.",
+          "candidates": [
+            {
+              "id": "r2-c1",
+              "display_name": "Ibuprofen analogue R2.1",
+              "disposition": "selected",
+              "summary": "Composite 0.65",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Selected as the strongest viable multi-property trade-off."
+            },
+            {
+              "id": "r2-c4",
+              "display_name": "Ibuprofen analogue R2.4",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Removed 1 fluorine substituent. Shortened or simplified the molecular scaffold.",
+              "reason": "Not selected: a near-tied composite score received less specialist support than the winner."
+            },
+            {
+              "id": "r2-c3",
+              "display_name": "Ibuprofen analogue R2.3",
+              "disposition": "considered",
+              "summary": "Composite 0.62",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not selected: composite utility trailed the winner by 0.03 after specialist preferences."
+            },
+            {
+              "id": "r2-c2",
+              "display_name": "Ibuprofen analogue R2.2",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            },
+            {
+              "id": "r2-c5",
+              "display_name": "Ibuprofen analogue R2.5",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Removed 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            }
+          ]
+        }
+      ],
+      "structure_3d": {
+        "atoms": [
+          {
+            "element": "C",
+            "x": 3.608,
+            "y": -0.9028,
+            "z": -1.0037,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 3.1373,
+            "y": -0.2322,
+            "z": 0.2893,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 3.3293,
+            "y": -1.1639,
+            "z": 1.4886,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.7008,
+            "y": 0.2468,
+            "z": 0.1787,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.4108,
+            "y": 1.6108,
+            "z": 0.2862,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 0.0953,
+            "y": 2.0742,
+            "z": 0.1886,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.9609,
+            "y": 1.1821,
+            "z": -0.0139,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "O",
+            "x": -2.2738,
+            "y": 1.5555,
+            "z": -0.1336,
+            "radius": 0.66,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": -2.6112,
+            "y": 2.8747,
+            "z": 0.2763,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": -0.6931,
+            "y": -0.1947,
+            "z": -0.1296,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 0.6388,
+            "y": -0.6446,
+            "z": -0.0317,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": -1.7966,
+            "y": -1.2207,
+            "z": -0.3683,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": -2.3483,
+            "y": -1.0988,
+            "z": -1.7924,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": -2.8771,
+            "y": -1.1852,
+            "z": 0.7065,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": -2.7367,
+            "y": -0.8942,
+            "z": 1.8855,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": -4.0814,
+            "y": -1.6276,
+            "z": 0.2851,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.0512,
+            "y": -1.8222,
+            "z": -1.2151,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.4822,
+            "y": -0.2319,
+            "z": -1.8608,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 4.6693,
+            "y": -1.1654,
+            "z": -0.9366,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.7843,
+            "y": 0.6399,
+            "z": 0.4532,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.0035,
+            "y": -0.6801,
+            "z": 2.4162,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 2.7614,
+            "y": -2.0944,
+            "z": 1.3803,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 4.3855,
+            "y": -1.431,
+            "z": 1.603,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 2.2094,
+            "y": 2.3321,
+            "z": 0.4461,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -0.0688,
+            "y": 3.1435,
+            "z": 0.268,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.2088,
+            "y": 3.6153,
+            "z": -0.4221,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.279,
+            "y": 3.0733,
+            "z": 1.3009,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.702,
+            "y": 2.9603,
+            "z": 0.2583,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 0.8485,
+            "y": -1.7091,
+            "z": -0.1198,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -1.3612,
+            "y": -2.226,
+            "z": -0.2816,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.0052,
+            "y": -1.9433,
+            "z": -2.0292,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -1.539,
+            "y": -1.0947,
+            "z": -2.5311,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.9359,
+            "y": -0.1852,
+            "z": -1.9307,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.6366,
+            "y": -1.5604,
+            "z": 1.0897,
+            "radius": 0.31,
+            "changed": false
+          }
+        ],
+        "bonds": [
+          [
+            0,
+            1,
+            1.0
+          ],
+          [
+            1,
+            2,
+            1.0
+          ],
+          [
+            1,
+            3,
+            1.0
+          ],
+          [
+            3,
+            4,
+            1.5
+          ],
+          [
+            4,
+            5,
+            1.5
+          ],
+          [
+            5,
+            6,
+            1.5
+          ],
+          [
+            6,
+            7,
+            1.0
+          ],
+          [
+            7,
+            8,
+            1.0
+          ],
+          [
+            6,
+            9,
+            1.5
+          ],
+          [
+            9,
+            10,
+            1.5
+          ],
+          [
+            9,
+            11,
+            1.0
+          ],
+          [
+            11,
+            12,
+            1.0
+          ],
+          [
+            11,
+            13,
+            1.0
+          ],
+          [
+            13,
+            14,
+            2.0
+          ],
+          [
+            13,
+            15,
+            1.0
+          ],
+          [
+            10,
+            3,
+            1.5
+          ],
+          [
+            0,
+            16,
+            1.0
+          ],
+          [
+            0,
+            17,
+            1.0
+          ],
+          [
+            0,
+            18,
+            1.0
+          ],
+          [
+            1,
+            19,
+            1.0
+          ],
+          [
+            2,
+            20,
+            1.0
+          ],
+          [
+            2,
+            21,
+            1.0
+          ],
+          [
+            2,
+            22,
+            1.0
+          ],
+          [
+            4,
+            23,
+            1.0
+          ],
+          [
+            5,
+            24,
+            1.0
+          ],
+          [
+            8,
+            25,
+            1.0
+          ],
+          [
+            8,
+            26,
+            1.0
+          ],
+          [
+            8,
+            27,
+            1.0
+          ],
+          [
+            10,
+            28,
+            1.0
+          ],
+          [
+            11,
+            29,
+            1.0
+          ],
+          [
+            12,
+            30,
+            1.0
+          ],
+          [
+            12,
+            31,
+            1.0
+          ],
+          [
+            12,
+            32,
+            1.0
+          ],
+          [
+            15,
+            33,
+            1.0
+          ]
+        ],
+        "formula": "C13H18O3",
+        "geometry": "ETKDGv3 + MMFF94s",
+        "changed_count": 7
+      },
+      "previous_scores": {
+        "affinity": 0.727,
+        "solubility": 0.695,
+        "bbb": 0.652,
+        "herg": 0.417,
+        "sa": 0.741
+      }
+    },
+    {
+      "round": 3,
+      "parent": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+      "candidates": [
+        {
+          "id": "r3-c1",
+          "display_name": "Ibuprofen analogue R3.1",
+          "smiles": "COc1ccc(cc1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.578,
+            "solubility": 0.753,
+            "bbb": 0.538,
+            "herg": 0.541,
+            "sa": 0.682
+          },
+          "composite": 0.6076
+        },
+        {
+          "id": "r3-c2",
+          "display_name": "Ibuprofen analogue R3.2",
+          "smiles": "CC(C)c1ccncc1C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.657,
+            "solubility": 0.746,
+            "bbb": 0.58,
+            "herg": 0.536,
+            "sa": 0.746
+          },
+          "composite": 0.6458
+        },
+        {
+          "id": "r3-c3",
+          "display_name": "Ibuprofen analogue R3.3",
+          "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+          "scores": {
+            "affinity": 0.596,
+            "solubility": 0.726,
+            "bbb": 0.608,
+            "herg": 0.488,
+            "sa": 0.688
+          },
+          "composite": 0.6139
+        },
+        {
+          "id": "r3-c4",
+          "display_name": "Ibuprofen analogue R3.4",
+          "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.668,
+            "solubility": 0.694,
+            "bbb": 0.686,
+            "herg": 0.385,
+            "sa": 0.657
+          },
+          "composite": 0.6246
+        },
+        {
+          "id": "r3-c5",
+          "display_name": "Ibuprofen analogue R3.5",
+          "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+          "scores": {
+            "affinity": 0.654,
+            "solubility": 0.756,
+            "bbb": 0.672,
+            "herg": 0.459,
+            "sa": 0.734
+          },
+          "composite": 0.6509
+        }
+      ],
+      "transcript": [
+        {
+          "agent": "affinity",
+          "verdict": "support",
+          "preferred_id": "r3-c4",
+          "preferred": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+          "reason": "Support r3-c4: affinity 0.67 is the strongest COX-1 / COX-2 surrogate score in this batch.",
+          "source": "deterministic",
+          "confidence": 0.525,
+          "confidence_basis": "Affinity leads the next candidate by 0.01."
+        },
+        {
+          "agent": "adme",
+          "verdict": "support",
+          "preferred_id": "r3-c5",
+          "preferred": "CC(C)c1ccc(cc1)CC(=O)O",
+          "reason": "Support r3-c5: it best balances BBB 0.67 with solubility 0.76.",
+          "source": "deterministic",
+          "confidence": 0.551,
+          "confidence_basis": "ADME leads the next candidate by 0.02."
+        },
+        {
+          "agent": "safety",
+          "verdict": "support",
+          "reason": "Support r3-c1: its normalized hERG safety 0.54 clears the policy threshold.",
+          "preferred": "COc1ccc(cc1)C(C)C(=O)O",
+          "preferred_id": "r3-c1",
+          "vetoed_ids": [],
+          "confidence": 0.579,
+          "confidence_basis": "The closest candidate is 0.035 normalized hERG units from the binding veto line."
+        },
+        {
+          "agent": "orchestrator",
+          "status": "ok",
+          "chosen_id": "r3-c5",
+          "chosen": "CC(C)c1ccc(cc1)CC(=O)O",
+          "rationale": "Choose r3-c5 after balancing potency, CNS exposure, solubility, cardiac safety, and synthesis. The specialists preferred different candidates.",
+          "source": "deterministic",
+          "confidence": 0.511,
+          "confidence_basis": "Composite utility leads the next candidate by 0.01."
+        }
+      ],
+      "winner": {
+        "id": "r3-c5",
+        "display_name": "Ibuprofen analogue R3.5",
+        "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+        "scores": {
+          "affinity": 0.654,
+          "solubility": 0.756,
+          "bbb": 0.672,
+          "herg": 0.459,
+          "sa": 0.734
+        },
+        "composite": 0.6509
+      },
+      "changes": {
+        "structural": [
+          "Removed 1 oxygen functionality.",
+          "Shortened or simplified the molecular scaffold."
+        ],
+        "outcome": [
+          "Improved bbb (+0.02), solubility (+0.01), herg (+0.01).",
+          "Reduced affinity (-0.03), sa (-0.03)."
+        ],
+        "deltas": {
+          "affinity": -0.026,
+          "solubility": 0.009,
+          "bbb": 0.021,
+          "herg": 0.007,
+          "sa": -0.026
+        }
+      },
+      "recommended_assays": [
+        {
+          "assay": "LC\u2013MS identity and purity",
+          "purpose": "Confirm the synthesized analogue and exclude impurities before biological testing.",
+          "readout": "Expected mass, retention profile, and purity.",
+          "priority": "Required"
+        }
+      ],
+      "agent_candidate_review": [
+        {
+          "agent": "Affinity",
+          "confidence": 0.525,
+          "confidence_basis": "Affinity leads the next candidate by 0.01.",
+          "candidates": [
+            {
+              "id": "r3-c4",
+              "display_name": "Ibuprofen analogue R3.4",
+              "disposition": "preferred",
+              "summary": "Affinity 0.67",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Highest predicted target-affinity score in the batch."
+            },
+            {
+              "id": "r3-c2",
+              "display_name": "Ibuprofen analogue R3.2",
+              "disposition": "considered",
+              "summary": "Affinity 0.66",
+              "change": "Added 1 aromatic ring nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.01 below this agent's leading candidate."
+            },
+            {
+              "id": "r3-c5",
+              "display_name": "Ibuprofen analogue R3.5",
+              "disposition": "considered",
+              "summary": "Affinity 0.65",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.01 below this agent's leading candidate."
+            },
+            {
+              "id": "r3-c3",
+              "display_name": "Ibuprofen analogue R3.3",
+              "disposition": "considered",
+              "summary": "Affinity 0.60",
+              "change": "Added 1 amine nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.07 below this agent's leading candidate."
+            },
+            {
+              "id": "r3-c1",
+              "display_name": "Ibuprofen analogue R3.1",
+              "disposition": "considered",
+              "summary": "Affinity 0.58",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.09 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "ADME",
+          "confidence": 0.551,
+          "confidence_basis": "ADME leads the next candidate by 0.02.",
+          "candidates": [
+            {
+              "id": "r3-c5",
+              "display_name": "Ibuprofen analogue R3.5",
+              "disposition": "preferred",
+              "summary": "BBB 0.67 \u00b7 Solubility 0.76",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Best combined BBB and solubility balance in the batch."
+            },
+            {
+              "id": "r3-c4",
+              "display_name": "Ibuprofen analogue R3.4",
+              "disposition": "considered",
+              "summary": "BBB 0.69 \u00b7 Solubility 0.69",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r3-c3",
+              "display_name": "Ibuprofen analogue R3.3",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.73",
+              "change": "Added 1 amine nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r3-c2",
+              "display_name": "Ibuprofen analogue R3.2",
+              "disposition": "considered",
+              "summary": "BBB 0.58 \u00b7 Solubility 0.75",
+              "change": "Added 1 aromatic ring nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r3-c1",
+              "display_name": "Ibuprofen analogue R3.1",
+              "disposition": "considered",
+              "summary": "BBB 0.54 \u00b7 Solubility 0.75",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.07 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "Safety",
+          "confidence": 0.579,
+          "confidence_basis": "The closest candidate is 0.035 normalized hERG units from the binding veto line.",
+          "candidates": [
+            {
+              "id": "r3-c1",
+              "display_name": "Ibuprofen analogue R3.1",
+              "disposition": "preferred",
+              "summary": "hERG safety 0.54",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Safest surviving candidate in this batch."
+            },
+            {
+              "id": "r3-c2",
+              "display_name": "Ibuprofen analogue R3.2",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.54",
+              "change": "Added 1 aromatic ring nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r3-c3",
+              "display_name": "Ibuprofen analogue R3.3",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.49",
+              "change": "Added 1 amine nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r3-c5",
+              "display_name": "Ibuprofen analogue R3.5",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.46",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r3-c4",
+              "display_name": "Ibuprofen analogue R3.4",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.39",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            }
+          ]
+        },
+        {
+          "agent": "Orchestrator",
+          "confidence": 0.511,
+          "confidence_basis": "Composite utility leads the next candidate by 0.01.",
+          "candidates": [
+            {
+              "id": "r3-c5",
+              "display_name": "Ibuprofen analogue R3.5",
+              "disposition": "selected",
+              "summary": "Composite 0.65",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Selected as the strongest viable multi-property trade-off."
+            },
+            {
+              "id": "r3-c2",
+              "display_name": "Ibuprofen analogue R3.2",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Added 1 aromatic ring nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.01 after specialist preferences."
+            },
+            {
+              "id": "r3-c4",
+              "display_name": "Ibuprofen analogue R3.4",
+              "disposition": "considered",
+              "summary": "Composite 0.62",
+              "change": "Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.03 after specialist preferences."
+            },
+            {
+              "id": "r3-c3",
+              "display_name": "Ibuprofen analogue R3.3",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Added 1 amine nitrogen. Removed 1 oxygen functionality. Shortened or simplified the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            },
+            {
+              "id": "r3-c1",
+              "display_name": "Ibuprofen analogue R3.1",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Shortened or simplified the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            }
+          ]
+        }
+      ],
+      "structure_3d": {
+        "atoms": [
+          {
+            "element": "C",
+            "x": -2.9161,
+            "y": -1.6424,
+            "z": 0.2238,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -2.5756,
+            "y": -0.162,
+            "z": 0.4122,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -3.4243,
+            "y": 0.7147,
+            "z": -0.5121,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -1.0919,
+            "y": 0.0972,
+            "z": 0.2214,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.3247,
+            "y": 0.5775,
+            "z": 1.2917,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.0434,
+            "y": 0.8192,
+            "z": 1.1406,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.6746,
+            "y": 0.5906,
+            "z": -0.0878,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 0.9145,
+            "y": 0.1023,
+            "z": -1.1572,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": -0.4536,
+            "y": -0.1389,
+            "z": -1.0043,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 3.154,
+            "y": 0.8417,
+            "z": -0.2492,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 4.0192,
+            "y": -0.3513,
+            "z": 0.0746,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "O",
+            "x": 3.6788,
+            "y": -1.4627,
+            "z": 0.4414,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 5.3323,
+            "y": -0.0728,
+            "z": -0.0871,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.7294,
+            "y": -1.9787,
+            "z": -0.8019,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.3187,
+            "y": -2.2699,
+            "z": 0.8947,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.9729,
+            "y": -1.8255,
+            "z": 0.4463,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.8464,
+            "y": 0.1022,
+            "z": 1.4431,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.4903,
+            "y": 0.5767,
+            "z": -0.3012,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.2612,
+            "y": 0.4752,
+            "z": -1.5685,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.1891,
+            "y": 1.7755,
+            "z": -0.3701,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -0.7862,
+            "y": 0.7637,
+            "z": 2.2591,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.6115,
+            "y": 1.1837,
+            "z": 1.9935,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.3808,
+            "y": -0.0993,
+            "z": -2.1189,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -1.0155,
+            "y": -0.5195,
+            "z": -1.854,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.3582,
+            "y": 1.1458,
+            "z": -1.2829,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.4528,
+            "y": 1.6717,
+            "z": 0.4022,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 5.7759,
+            "y": -0.9145,
+            "z": 0.1509,
+            "radius": 0.31,
+            "changed": false
+          }
+        ],
+        "bonds": [
+          [
+            0,
+            1,
+            1.0
+          ],
+          [
+            1,
+            2,
+            1.0
+          ],
+          [
+            1,
+            3,
+            1.0
+          ],
+          [
+            3,
+            4,
+            1.5
+          ],
+          [
+            4,
+            5,
+            1.5
+          ],
+          [
+            5,
+            6,
+            1.5
+          ],
+          [
+            6,
+            7,
+            1.5
+          ],
+          [
+            7,
+            8,
+            1.5
+          ],
+          [
+            6,
+            9,
+            1.0
+          ],
+          [
+            9,
+            10,
+            1.0
+          ],
+          [
+            10,
+            11,
+            2.0
+          ],
+          [
+            10,
+            12,
+            1.0
+          ],
+          [
+            8,
+            3,
+            1.5
+          ],
+          [
+            0,
+            13,
+            1.0
+          ],
+          [
+            0,
+            14,
+            1.0
+          ],
+          [
+            0,
+            15,
+            1.0
+          ],
+          [
+            1,
+            16,
+            1.0
+          ],
+          [
+            2,
+            17,
+            1.0
+          ],
+          [
+            2,
+            18,
+            1.0
+          ],
+          [
+            2,
+            19,
+            1.0
+          ],
+          [
+            4,
+            20,
+            1.0
+          ],
+          [
+            5,
+            21,
+            1.0
+          ],
+          [
+            7,
+            22,
+            1.0
+          ],
+          [
+            8,
+            23,
+            1.0
+          ],
+          [
+            9,
+            24,
+            1.0
+          ],
+          [
+            9,
+            25,
+            1.0
+          ],
+          [
+            12,
+            26,
+            1.0
+          ]
+        ],
+        "formula": "C11H14O2",
+        "geometry": "ETKDGv3 + MMFF94s",
+        "changed_count": 5
+      },
+      "previous_scores": {
+        "affinity": 0.68,
+        "solubility": 0.747,
+        "bbb": 0.651,
+        "herg": 0.452,
+        "sa": 0.76
+      }
+    },
+    {
+      "round": 4,
+      "parent": "CC(C)c1ccc(cc1)CC(=O)O",
+      "candidates": [
+        {
+          "id": "r4-c1",
+          "display_name": "Ibuprofen analogue R4.1",
+          "smiles": "CC(C)c1ccc(C)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.665,
+            "solubility": 0.632,
+            "bbb": 0.612,
+            "herg": 0.469,
+            "sa": 0.666
+          },
+          "composite": 0.6124
+        },
+        {
+          "id": "r4-c2",
+          "display_name": "Ibuprofen analogue R4.2",
+          "smiles": "CC(C)c1ccc(F)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.722,
+            "solubility": 0.628,
+            "bbb": 0.644,
+            "herg": 0.362,
+            "sa": 0.762
+          },
+          "composite": 0.6274
+        },
+        {
+          "id": "r4-c3",
+          "display_name": "Ibuprofen analogue R4.3",
+          "smiles": "CC(C)c1ccc(O)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.602,
+            "solubility": 0.703,
+            "bbb": 0.598,
+            "herg": 0.44,
+            "sa": 0.724
+          },
+          "composite": 0.6046
+        },
+        {
+          "id": "r4-c4",
+          "display_name": "Ibuprofen analogue R4.4",
+          "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)S",
+          "scores": {
+            "affinity": 0.587,
+            "solubility": 0.592,
+            "bbb": 0.682,
+            "herg": 0.377,
+            "sa": 0.688
+          },
+          "composite": 0.5812
+        },
+        {
+          "id": "r4-c5",
+          "display_name": "Ibuprofen analogue R4.5",
+          "smiles": "CC(C)c1ccc(cc1F)CC(=O)O",
+          "scores": {
+            "affinity": 0.707,
+            "solubility": 0.719,
+            "bbb": 0.61,
+            "herg": 0.469,
+            "sa": 0.725
+          },
+          "composite": 0.6481
+        },
+        {
+          "id": "r4-c6",
+          "display_name": "Ibuprofen analogue R4.6",
+          "smiles": "CC(C)c1ccc(cc1)C(O)C(=O)O",
+          "scores": {
+            "affinity": 0.679,
+            "solubility": 0.709,
+            "bbb": 0.569,
+            "herg": 0.499,
+            "sa": 0.711
+          },
+          "composite": 0.6327
+        }
+      ],
+      "transcript": [
+        {
+          "agent": "affinity",
+          "verdict": "support",
+          "preferred_id": "r4-c2",
+          "preferred": "CC(C)c1ccc(F)c(c1)C(C)C(=O)O",
+          "reason": "Support r4-c2: affinity 0.72 is the strongest COX-1 / COX-2 surrogate score in this batch.",
+          "source": "deterministic",
+          "confidence": 0.534,
+          "confidence_basis": "Affinity leads the next candidate by 0.02."
+        },
+        {
+          "agent": "adme",
+          "verdict": "support",
+          "preferred_id": "r4-c5",
+          "preferred": "CC(C)c1ccc(cc1F)CC(=O)O",
+          "reason": "Support r4-c5: it best balances BBB 0.61 with solubility 0.72.",
+          "source": "deterministic",
+          "confidence": 0.531,
+          "confidence_basis": "ADME leads the next candidate by 0.01."
+        },
+        {
+          "agent": "safety",
+          "verdict": "object",
+          "reason": "r4-c6 is safest, but its hERG score 0.50 remains in the caution band.",
+          "preferred": "CC(C)c1ccc(cc1)C(O)C(=O)O",
+          "preferred_id": "r4-c6",
+          "vetoed_ids": [],
+          "confidence": 0.527,
+          "confidence_basis": "The closest candidate is 0.012 normalized hERG units from the binding veto line."
+        },
+        {
+          "agent": "orchestrator",
+          "status": "ok",
+          "chosen_id": "r4-c5",
+          "chosen": "CC(C)c1ccc(cc1F)CC(=O)O",
+          "rationale": "Choose r4-c5 after balancing potency, CNS exposure, solubility, cardiac safety, and synthesis. The specialists preferred different candidates.",
+          "source": "deterministic",
+          "confidence": 0.535,
+          "confidence_basis": "Composite utility leads the next candidate by 0.02."
+        }
+      ],
+      "winner": {
+        "id": "r4-c5",
+        "display_name": "Ibuprofen analogue R4.5",
+        "smiles": "CC(C)c1ccc(cc1F)CC(=O)O",
+        "scores": {
+          "affinity": 0.707,
+          "solubility": 0.719,
+          "bbb": 0.61,
+          "herg": 0.469,
+          "sa": 0.725
+        },
+        "composite": 0.6481
+      },
+      "changes": {
+        "structural": [
+          "Added 1 fluorine substituent."
+        ],
+        "outcome": [
+          "Improved affinity (+0.05), herg (+0.01).",
+          "Reduced bbb (-0.06), solubility (-0.04), sa (-0.01)."
+        ],
+        "deltas": {
+          "affinity": 0.053,
+          "solubility": -0.037,
+          "bbb": -0.062,
+          "herg": 0.01,
+          "sa": -0.009
+        }
+      },
+      "recommended_assays": [
+        {
+          "assay": "LC\u2013MS identity and purity",
+          "purpose": "Confirm the synthesized analogue and exclude impurities before biological testing.",
+          "readout": "Expected mass, retention profile, and purity.",
+          "priority": "Required"
+        },
+        {
+          "assay": "PAMPA-BBB or MDCK-MDR1 permeability",
+          "purpose": "Test passive brain penetration and identify possible efflux liability.",
+          "readout": "Apparent permeability and, for MDCK-MDR1, efflux ratio.",
+          "priority": "Medium"
+        },
+        {
+          "assay": "COX-1 / COX-2 enzyme inhibition",
+          "purpose": "Measure whether the structural edit preserved cyclooxygenase inhibition and its isoform profile.",
+          "readout": "COX-1 and COX-2 concentration\u2013response IC\u2085\u2080 values.",
+          "priority": "High"
+        },
+        {
+          "assay": "Kinetic and equilibrium solubility",
+          "purpose": "Check whether the analogue remains soluble under assay-relevant conditions.",
+          "readout": "Concentration in solution by LC\u2013MS across relevant pH conditions.",
+          "priority": "Medium"
+        }
+      ],
+      "agent_candidate_review": [
+        {
+          "agent": "Affinity",
+          "confidence": 0.534,
+          "confidence_basis": "Affinity leads the next candidate by 0.02.",
+          "candidates": [
+            {
+              "id": "r4-c2",
+              "display_name": "Ibuprofen analogue R4.2",
+              "disposition": "preferred",
+              "summary": "Affinity 0.72",
+              "change": "Added 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Highest predicted target-affinity score in the batch."
+            },
+            {
+              "id": "r4-c5",
+              "display_name": "Ibuprofen analogue R4.5",
+              "disposition": "considered",
+              "summary": "Affinity 0.71",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Not preferred: affinity is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c6",
+              "display_name": "Ibuprofen analogue R4.6",
+              "disposition": "considered",
+              "summary": "Affinity 0.68",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.04 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c1",
+              "display_name": "Ibuprofen analogue R4.1",
+              "disposition": "considered",
+              "summary": "Affinity 0.67",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.06 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c3",
+              "display_name": "Ibuprofen analogue R4.3",
+              "disposition": "considered",
+              "summary": "Affinity 0.60",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.12 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c4",
+              "display_name": "Ibuprofen analogue R4.4",
+              "disposition": "considered",
+              "summary": "Affinity 0.59",
+              "change": "Removed 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.14 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "ADME",
+          "confidence": 0.531,
+          "confidence_basis": "ADME leads the next candidate by 0.01.",
+          "candidates": [
+            {
+              "id": "r4-c5",
+              "display_name": "Ibuprofen analogue R4.5",
+              "disposition": "preferred",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.72",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Best combined BBB and solubility balance in the batch."
+            },
+            {
+              "id": "r4-c3",
+              "display_name": "Ibuprofen analogue R4.3",
+              "disposition": "considered",
+              "summary": "BBB 0.60 \u00b7 Solubility 0.70",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.01 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c4",
+              "display_name": "Ibuprofen analogue R4.4",
+              "disposition": "considered",
+              "summary": "BBB 0.68 \u00b7 Solubility 0.59",
+              "change": "Removed 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c2",
+              "display_name": "Ibuprofen analogue R4.2",
+              "disposition": "considered",
+              "summary": "BBB 0.64 \u00b7 Solubility 0.63",
+              "change": "Added 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.03 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c6",
+              "display_name": "Ibuprofen analogue R4.6",
+              "disposition": "considered",
+              "summary": "BBB 0.57 \u00b7 Solubility 0.71",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.03 below this agent's leading candidate."
+            },
+            {
+              "id": "r4-c1",
+              "display_name": "Ibuprofen analogue R4.1",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.63",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.04 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "Safety",
+          "confidence": 0.527,
+          "confidence_basis": "The closest candidate is 0.012 normalized hERG units from the binding veto line.",
+          "candidates": [
+            {
+              "id": "r4-c6",
+              "display_name": "Ibuprofen analogue R4.6",
+              "disposition": "preferred",
+              "summary": "hERG safety 0.50",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Safest surviving candidate in this batch."
+            },
+            {
+              "id": "r4-c1",
+              "display_name": "Ibuprofen analogue R4.1",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.47",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r4-c5",
+              "display_name": "Ibuprofen analogue R4.5",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.47",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r4-c3",
+              "display_name": "Ibuprofen analogue R4.3",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.44",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r4-c4",
+              "display_name": "Ibuprofen analogue R4.4",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.38",
+              "change": "Removed 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r4-c2",
+              "display_name": "Ibuprofen analogue R4.2",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.36",
+              "change": "Added 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            }
+          ]
+        },
+        {
+          "agent": "Orchestrator",
+          "confidence": 0.535,
+          "confidence_basis": "Composite utility leads the next candidate by 0.02.",
+          "candidates": [
+            {
+              "id": "r4-c5",
+              "display_name": "Ibuprofen analogue R4.5",
+              "disposition": "selected",
+              "summary": "Composite 0.65",
+              "change": "Added 1 fluorine substituent.",
+              "reason": "Selected as the strongest viable multi-property trade-off."
+            },
+            {
+              "id": "r4-c6",
+              "display_name": "Ibuprofen analogue R4.6",
+              "disposition": "considered",
+              "summary": "Composite 0.63",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.02 after specialist preferences."
+            },
+            {
+              "id": "r4-c2",
+              "display_name": "Ibuprofen analogue R4.2",
+              "disposition": "considered",
+              "summary": "Composite 0.63",
+              "change": "Added 1 fluorine substituent. Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.02 after specialist preferences."
+            },
+            {
+              "id": "r4-c1",
+              "display_name": "Ibuprofen analogue R4.1",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            },
+            {
+              "id": "r4-c3",
+              "display_name": "Ibuprofen analogue R4.3",
+              "disposition": "considered",
+              "summary": "Composite 0.60",
+              "change": "Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            },
+            {
+              "id": "r4-c4",
+              "display_name": "Ibuprofen analogue R4.4",
+              "disposition": "considered",
+              "summary": "Composite 0.58",
+              "change": "Removed 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not selected: composite utility trailed the winner by 0.07 after specialist preferences."
+            }
+          ]
+        }
+      ],
+      "structure_3d": {
+        "atoms": [
+          {
+            "element": "C",
+            "x": -3.4018,
+            "y": 0.3108,
+            "z": 0.8953,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -2.5858,
+            "y": -0.1604,
+            "z": -0.3114,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -2.89,
+            "y": 0.6973,
+            "z": -1.5425,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -1.1009,
+            "y": -0.1847,
+            "z": -0.005,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.3965,
+            "y": 0.9788,
+            "z": 0.3385,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 0.9745,
+            "y": 0.9314,
+            "z": 0.614,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.6737,
+            "y": -0.2815,
+            "z": 0.5569,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 0.9771,
+            "y": -1.4435,
+            "z": 0.2058,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.3887,
+            "y": -1.3872,
+            "z": -0.0666,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "F",
+            "x": -1.0184,
+            "y": -2.5254,
+            "z": -0.3938,
+            "radius": 0.57,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 3.1556,
+            "y": -0.3296,
+            "z": 0.8403,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 4.0188,
+            "y": -0.0548,
+            "z": -0.3666,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 3.6702,
+            "y": 0.2339,
+            "z": -1.4983,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 5.334,
+            "y": -0.1543,
+            "z": -0.0729,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.1807,
+            "y": 1.3507,
+            "z": 1.1595,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.1933,
+            "y": -0.3087,
+            "z": 1.7747,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.4746,
+            "y": 0.243,
+            "z": 0.6843,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.9181,
+            "y": -1.1807,
+            "z": -0.542,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.6446,
+            "y": 1.7522,
+            "z": -1.3782,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.3173,
+            "y": 0.3526,
+            "z": -2.4108,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.9536,
+            "y": 0.6396,
+            "z": -1.7984,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -0.9077,
+            "y": 1.9377,
+            "z": 0.3899,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.4927,
+            "y": 1.8543,
+            "z": 0.868,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.4817,
+            "y": -2.4028,
+            "z": 0.1361,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.4169,
+            "y": -1.3193,
+            "z": 1.2337,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.3991,
+            "y": 0.4074,
+            "z": 1.6148,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 5.7777,
+            "y": 0.0431,
+            "z": -0.9252,
+            "radius": 0.31,
+            "changed": false
+          }
+        ],
+        "bonds": [
+          [
+            0,
+            1,
+            1.0
+          ],
+          [
+            1,
+            2,
+            1.0
+          ],
+          [
+            1,
+            3,
+            1.0
+          ],
+          [
+            3,
+            4,
+            1.5
+          ],
+          [
+            4,
+            5,
+            1.5
+          ],
+          [
+            5,
+            6,
+            1.5
+          ],
+          [
+            6,
+            7,
+            1.5
+          ],
+          [
+            7,
+            8,
+            1.5
+          ],
+          [
+            8,
+            9,
+            1.0
+          ],
+          [
+            6,
+            10,
+            1.0
+          ],
+          [
+            10,
+            11,
+            1.0
+          ],
+          [
+            11,
+            12,
+            2.0
+          ],
+          [
+            11,
+            13,
+            1.0
+          ],
+          [
+            8,
+            3,
+            1.5
+          ],
+          [
+            0,
+            14,
+            1.0
+          ],
+          [
+            0,
+            15,
+            1.0
+          ],
+          [
+            0,
+            16,
+            1.0
+          ],
+          [
+            1,
+            17,
+            1.0
+          ],
+          [
+            2,
+            18,
+            1.0
+          ],
+          [
+            2,
+            19,
+            1.0
+          ],
+          [
+            2,
+            20,
+            1.0
+          ],
+          [
+            4,
+            21,
+            1.0
+          ],
+          [
+            5,
+            22,
+            1.0
+          ],
+          [
+            7,
+            23,
+            1.0
+          ],
+          [
+            10,
+            24,
+            1.0
+          ],
+          [
+            10,
+            25,
+            1.0
+          ],
+          [
+            13,
+            26,
+            1.0
+          ]
+        ],
+        "formula": "C11H13FO2",
+        "geometry": "ETKDGv3 + MMFF94s",
+        "changed_count": 1
+      },
+      "previous_scores": {
+        "affinity": 0.654,
+        "solubility": 0.756,
+        "bbb": 0.672,
+        "herg": 0.459,
+        "sa": 0.734
+      }
+    },
+    {
+      "round": 5,
+      "parent": "CC(C)c1ccc(cc1F)CC(=O)O",
+      "candidates": [
+        {
+          "id": "r5-c1",
+          "display_name": "Ibuprofen analogue R5.1",
+          "smiles": "CC(C)c1ccncc1C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.657,
+            "solubility": 0.746,
+            "bbb": 0.58,
+            "herg": 0.536,
+            "sa": 0.746
+          },
+          "composite": 0.6458
+        },
+        {
+          "id": "r5-c2",
+          "display_name": "Ibuprofen analogue R5.2",
+          "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.68,
+            "solubility": 0.747,
+            "bbb": 0.651,
+            "herg": 0.452,
+            "sa": 0.76
+          },
+          "composite": 0.6544
+        },
+        {
+          "id": "r5-c3",
+          "display_name": "Ibuprofen analogue R5.3",
+          "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+          "scores": {
+            "affinity": 0.596,
+            "solubility": 0.726,
+            "bbb": 0.608,
+            "herg": 0.488,
+            "sa": 0.688
+          },
+          "composite": 0.6139
+        },
+        {
+          "id": "r5-c4",
+          "display_name": "Ibuprofen analogue R5.4",
+          "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+          "scores": {
+            "affinity": 0.668,
+            "solubility": 0.694,
+            "bbb": 0.686,
+            "herg": 0.385,
+            "sa": 0.657
+          },
+          "composite": 0.6246
+        },
+        {
+          "id": "r5-c5",
+          "display_name": "Ibuprofen analogue R5.5",
+          "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+          "scores": {
+            "affinity": 0.654,
+            "solubility": 0.756,
+            "bbb": 0.672,
+            "herg": 0.459,
+            "sa": 0.734
+          },
+          "composite": 0.6509
+        },
+        {
+          "id": "r5-c6",
+          "display_name": "Ibuprofen analogue R5.6",
+          "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+          "scores": {
+            "affinity": 0.727,
+            "solubility": 0.695,
+            "bbb": 0.652,
+            "herg": 0.417,
+            "sa": 0.741
+          },
+          "composite": 0.6509
+        }
+      ],
+      "transcript": [
+        {
+          "agent": "affinity",
+          "verdict": "support",
+          "preferred_id": "r5-c6",
+          "preferred": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+          "reason": "Support r5-c6: affinity 0.73 is the strongest COX-1 / COX-2 surrogate score in this batch.",
+          "source": "deterministic",
+          "confidence": 0.606,
+          "confidence_basis": "Affinity leads the next candidate by 0.05."
+        },
+        {
+          "agent": "adme",
+          "verdict": "support",
+          "preferred_id": "r5-c5",
+          "preferred": "CC(C)c1ccc(cc1)CC(=O)O",
+          "reason": "Support r5-c5: it best balances BBB 0.67 with solubility 0.76.",
+          "source": "deterministic",
+          "confidence": 0.534,
+          "confidence_basis": "ADME leads the next candidate by 0.02."
+        },
+        {
+          "agent": "safety",
+          "verdict": "support",
+          "reason": "Support r5-c1: its normalized hERG safety 0.54 clears the policy threshold.",
+          "preferred": "CC(C)c1ccncc1C(C)C(=O)O",
+          "preferred_id": "r5-c1",
+          "vetoed_ids": [],
+          "confidence": 0.579,
+          "confidence_basis": "The closest candidate is 0.035 normalized hERG units from the binding veto line."
+        },
+        {
+          "agent": "orchestrator",
+          "status": "ok",
+          "chosen_id": "r5-c6",
+          "chosen": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+          "rationale": "Choose r5-c6 after balancing potency, CNS exposure, solubility, cardiac safety, and synthesis. The specialists preferred different candidates.",
+          "source": "deterministic",
+          "confidence": 0.5,
+          "confidence_basis": "The selected candidate trails the composite utility leader by 0.00; confidence is limited."
+        }
+      ],
+      "winner": {
+        "id": "r5-c6",
+        "display_name": "Ibuprofen analogue R5.6",
+        "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+        "scores": {
+          "affinity": 0.727,
+          "solubility": 0.695,
+          "bbb": 0.652,
+          "herg": 0.417,
+          "sa": 0.741
+        },
+        "composite": 0.6509
+      },
+      "changes": {
+        "structural": [
+          "Rearranged substituent placement while retaining the main scaffold."
+        ],
+        "outcome": [
+          "Improved bbb (+0.04), affinity (+0.02), sa (+0.02).",
+          "Reduced herg (-0.05), solubility (-0.02)."
+        ],
+        "deltas": {
+          "affinity": 0.02,
+          "solubility": -0.024,
+          "bbb": 0.042,
+          "herg": -0.052,
+          "sa": 0.016
+        }
+      },
+      "recommended_assays": [
+        {
+          "assay": "LC\u2013MS identity and purity",
+          "purpose": "Confirm the synthesized analogue and exclude impurities before biological testing.",
+          "readout": "Expected mass, retention profile, and purity.",
+          "priority": "Required"
+        },
+        {
+          "assay": "Automated hERG patch clamp",
+          "purpose": "Verify that the predicted cardiac-safety improvement reflects lower channel blockade.",
+          "readout": "hERG current inhibition and concentration\u2013response IC\u2085\u2080.",
+          "priority": "High"
+        },
+        {
+          "assay": "PAMPA-BBB or MDCK-MDR1 permeability",
+          "purpose": "Test passive brain penetration and identify possible efflux liability.",
+          "readout": "Apparent permeability and, for MDCK-MDR1, efflux ratio.",
+          "priority": "Medium"
+        }
+      ],
+      "agent_candidate_review": [
+        {
+          "agent": "Affinity",
+          "confidence": 0.606,
+          "confidence_basis": "Affinity leads the next candidate by 0.05.",
+          "candidates": [
+            {
+              "id": "r5-c6",
+              "display_name": "Ibuprofen analogue R5.6",
+              "disposition": "preferred",
+              "summary": "Affinity 0.73",
+              "change": "Rearranged substituent placement while retaining the main scaffold.",
+              "reason": "Highest predicted target-affinity score in the batch."
+            },
+            {
+              "id": "r5-c2",
+              "display_name": "Ibuprofen analogue R5.2",
+              "disposition": "considered",
+              "summary": "Affinity 0.68",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: affinity is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c4",
+              "display_name": "Ibuprofen analogue R5.4",
+              "disposition": "considered",
+              "summary": "Affinity 0.67",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not preferred: affinity is 0.06 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c1",
+              "display_name": "Ibuprofen analogue R5.1",
+              "disposition": "considered",
+              "summary": "Affinity 0.66",
+              "change": "Removed 1 fluorine substituent. Added 1 aromatic ring nitrogen.",
+              "reason": "Not preferred: affinity is 0.07 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c5",
+              "display_name": "Ibuprofen analogue R5.5",
+              "disposition": "considered",
+              "summary": "Affinity 0.65",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not preferred: affinity is 0.07 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c3",
+              "display_name": "Ibuprofen analogue R5.3",
+              "disposition": "considered",
+              "summary": "Affinity 0.60",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Not preferred: affinity is 0.13 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "ADME",
+          "confidence": 0.534,
+          "confidence_basis": "ADME leads the next candidate by 0.02.",
+          "candidates": [
+            {
+              "id": "r5-c5",
+              "display_name": "Ibuprofen analogue R5.5",
+              "disposition": "preferred",
+              "summary": "BBB 0.67 \u00b7 Solubility 0.76",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Best combined BBB and solubility balance in the batch."
+            },
+            {
+              "id": "r5-c2",
+              "display_name": "Ibuprofen analogue R5.2",
+              "disposition": "considered",
+              "summary": "BBB 0.65 \u00b7 Solubility 0.75",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c4",
+              "display_name": "Ibuprofen analogue R5.4",
+              "disposition": "considered",
+              "summary": "BBB 0.69 \u00b7 Solubility 0.69",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not preferred: combined ADME score is 0.02 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c6",
+              "display_name": "Ibuprofen analogue R5.6",
+              "disposition": "considered",
+              "summary": "BBB 0.65 \u00b7 Solubility 0.69",
+              "change": "Rearranged substituent placement while retaining the main scaffold.",
+              "reason": "Not preferred: combined ADME score is 0.04 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c3",
+              "display_name": "Ibuprofen analogue R5.3",
+              "disposition": "considered",
+              "summary": "BBB 0.61 \u00b7 Solubility 0.73",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Not preferred: combined ADME score is 0.05 below this agent's leading candidate."
+            },
+            {
+              "id": "r5-c1",
+              "display_name": "Ibuprofen analogue R5.1",
+              "disposition": "considered",
+              "summary": "BBB 0.58 \u00b7 Solubility 0.75",
+              "change": "Removed 1 fluorine substituent. Added 1 aromatic ring nitrogen.",
+              "reason": "Not preferred: combined ADME score is 0.05 below this agent's leading candidate."
+            }
+          ]
+        },
+        {
+          "agent": "Safety",
+          "confidence": 0.579,
+          "confidence_basis": "The closest candidate is 0.035 normalized hERG units from the binding veto line.",
+          "candidates": [
+            {
+              "id": "r5-c1",
+              "display_name": "Ibuprofen analogue R5.1",
+              "disposition": "preferred",
+              "summary": "hERG safety 0.54",
+              "change": "Removed 1 fluorine substituent. Added 1 aromatic ring nitrogen.",
+              "reason": "Safest surviving candidate in this batch."
+            },
+            {
+              "id": "r5-c3",
+              "display_name": "Ibuprofen analogue R5.3",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.49",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r5-c5",
+              "display_name": "Ibuprofen analogue R5.5",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.46",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r5-c2",
+              "display_name": "Ibuprofen analogue R5.2",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.45",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r5-c6",
+              "display_name": "Ibuprofen analogue R5.6",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.42",
+              "change": "Rearranged substituent placement while retaining the main scaffold.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            },
+            {
+              "id": "r5-c4",
+              "display_name": "Ibuprofen analogue R5.4",
+              "disposition": "eligible",
+              "summary": "hERG safety 0.39",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Passed the safety threshold but was not the safest survivor."
+            }
+          ]
+        },
+        {
+          "agent": "Orchestrator",
+          "confidence": 0.5,
+          "confidence_basis": "The selected candidate trails the composite utility leader by 0.00; confidence is limited.",
+          "candidates": [
+            {
+              "id": "r5-c2",
+              "display_name": "Ibuprofen analogue R5.2",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Removed 1 fluorine substituent. Added 1 oxygen functionality. Expanded the molecular scaffold.",
+              "reason": "Not selected: a near-tied composite score received less specialist support than the winner."
+            },
+            {
+              "id": "r5-c5",
+              "display_name": "Ibuprofen analogue R5.5",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not selected: a near-tied composite score received less specialist support than the winner."
+            },
+            {
+              "id": "r5-c6",
+              "display_name": "Ibuprofen analogue R5.6",
+              "disposition": "selected",
+              "summary": "Composite 0.65",
+              "change": "Rearranged substituent placement while retaining the main scaffold.",
+              "reason": "Selected as the strongest viable multi-property trade-off."
+            },
+            {
+              "id": "r5-c1",
+              "display_name": "Ibuprofen analogue R5.1",
+              "disposition": "considered",
+              "summary": "Composite 0.65",
+              "change": "Removed 1 fluorine substituent. Added 1 aromatic ring nitrogen.",
+              "reason": "Not selected: composite utility trailed the winner by 0.01 after specialist preferences."
+            },
+            {
+              "id": "r5-c4",
+              "display_name": "Ibuprofen analogue R5.4",
+              "disposition": "considered",
+              "summary": "Composite 0.62",
+              "change": "Removed 1 fluorine substituent.",
+              "reason": "Not selected: composite utility trailed the winner by 0.03 after specialist preferences."
+            },
+            {
+              "id": "r5-c3",
+              "display_name": "Ibuprofen analogue R5.3",
+              "disposition": "considered",
+              "summary": "Composite 0.61",
+              "change": "Removed 1 fluorine substituent. Added 1 amine nitrogen.",
+              "reason": "Not selected: composite utility trailed the winner by 0.04 after specialist preferences."
+            }
+          ]
+        }
+      ],
+      "structure_3d": {
+        "atoms": [
+          {
+            "element": "C",
+            "x": -2.9541,
+            "y": -1.147,
+            "z": 1.0341,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -2.5662,
+            "y": 0.1798,
+            "z": 0.3767,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -3.3783,
+            "y": 0.4142,
+            "z": -0.8995,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -1.0732,
+            "y": 0.2548,
+            "z": 0.1104,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.4333,
+            "y": -0.6403,
+            "z": -0.7584,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 0.9425,
+            "y": -0.5542,
+            "z": -0.989,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.7119,
+            "y": 0.4305,
+            "z": -0.3546,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": 1.0751,
+            "y": 1.3237,
+            "z": 0.5163,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "C",
+            "x": -0.3008,
+            "y": 1.2375,
+            "z": 0.7447,
+            "radius": 0.76,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 3.2052,
+            "y": 0.5267,
+            "z": -0.593,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "F",
+            "x": 3.6939,
+            "y": 1.766,
+            "z": -0.2587,
+            "radius": 0.57,
+            "changed": true
+          },
+          {
+            "element": "C",
+            "x": 3.9746,
+            "y": -0.5915,
+            "z": 0.1061,
+            "radius": 0.76,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 3.7475,
+            "y": -1.7919,
+            "z": 0.036,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "O",
+            "x": 5.0298,
+            "y": -0.162,
+            "z": 0.8339,
+            "radius": 0.66,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.0179,
+            "y": -1.1505,
+            "z": 1.2953,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.3824,
+            "y": -1.3096,
+            "z": 1.9547,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.7716,
+            "y": -2.001,
+            "z": 0.3728,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -2.8358,
+            "y": 0.9786,
+            "z": 1.0804,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.1096,
+            "y": 1.3693,
+            "z": -1.3646,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -4.4499,
+            "y": 0.4409,
+            "z": -0.6741,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -3.2145,
+            "y": -0.3757,
+            "z": -1.6407,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -1.0007,
+            "y": -1.419,
+            "z": -1.2635,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.4087,
+            "y": -1.2717,
+            "z": -1.6621,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 1.6488,
+            "y": 2.0992,
+            "z": 1.0217,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": -0.7645,
+            "y": 1.9484,
+            "z": 1.4254,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 3.4026,
+            "y": 0.4238,
+            "z": -1.6662,
+            "radius": 0.31,
+            "changed": false
+          },
+          {
+            "element": "H",
+            "x": 5.412,
+            "y": -0.979,
+            "z": 1.2157,
+            "radius": 0.31,
+            "changed": false
+          }
+        ],
+        "bonds": [
+          [
+            0,
+            1,
+            1.0
+          ],
+          [
+            1,
+            2,
+            1.0
+          ],
+          [
+            1,
+            3,
+            1.0
+          ],
+          [
+            3,
+            4,
+            1.5
+          ],
+          [
+            4,
+            5,
+            1.5
+          ],
+          [
+            5,
+            6,
+            1.5
+          ],
+          [
+            6,
+            7,
+            1.5
+          ],
+          [
+            7,
+            8,
+            1.5
+          ],
+          [
+            6,
+            9,
+            1.0
+          ],
+          [
+            9,
+            10,
+            1.0
+          ],
+          [
+            9,
+            11,
+            1.0
+          ],
+          [
+            11,
+            12,
+            2.0
+          ],
+          [
+            11,
+            13,
+            1.0
+          ],
+          [
+            8,
+            3,
+            1.5
+          ],
+          [
+            0,
+            14,
+            1.0
+          ],
+          [
+            0,
+            15,
+            1.0
+          ],
+          [
+            0,
+            16,
+            1.0
+          ],
+          [
+            1,
+            17,
+            1.0
+          ],
+          [
+            2,
+            18,
+            1.0
+          ],
+          [
+            2,
+            19,
+            1.0
+          ],
+          [
+            2,
+            20,
+            1.0
+          ],
+          [
+            4,
+            21,
+            1.0
+          ],
+          [
+            5,
+            22,
+            1.0
+          ],
+          [
+            7,
+            23,
+            1.0
+          ],
+          [
+            8,
+            24,
+            1.0
+          ],
+          [
+            9,
+            25,
+            1.0
+          ],
+          [
+            13,
+            26,
+            1.0
+          ]
+        ],
+        "formula": "C11H13FO2",
+        "geometry": "ETKDGv3 + MMFF94s",
+        "changed_count": 2
+      },
+      "previous_scores": {
+        "affinity": 0.707,
+        "solubility": 0.719,
+        "bbb": 0.61,
+        "herg": 0.469,
+        "sa": 0.725
+      }
+    }
+  ],
+  "all_candidates": [
+    {
+      "id": "r1-c1",
+      "display_name": "Ibuprofen analogue R1.1",
+      "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.68,
+        "solubility": 0.747,
+        "bbb": 0.651,
+        "herg": 0.452,
+        "sa": 0.76
+      },
+      "composite": 0.6544,
+      "round": 1
+    },
+    {
+      "id": "r1-c2",
+      "display_name": "Ibuprofen analogue R1.2",
+      "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+      "scores": {
+        "affinity": 0.596,
+        "solubility": 0.726,
+        "bbb": 0.608,
+        "herg": 0.488,
+        "sa": 0.688
+      },
+      "composite": 0.6139,
+      "round": 1
+    },
+    {
+      "id": "r1-c3",
+      "display_name": "Ibuprofen analogue R1.3",
+      "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+      "scores": {
+        "affinity": 0.654,
+        "solubility": 0.756,
+        "bbb": 0.672,
+        "herg": 0.459,
+        "sa": 0.734
+      },
+      "composite": 0.6509,
+      "round": 1
+    },
+    {
+      "id": "r1-c4",
+      "display_name": "Ibuprofen analogue R1.4",
+      "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+      "scores": {
+        "affinity": 0.727,
+        "solubility": 0.695,
+        "bbb": 0.652,
+        "herg": 0.417,
+        "sa": 0.741
+      },
+      "composite": 0.6509,
+      "round": 1
+    },
+    {
+      "id": "r1-c5",
+      "display_name": "Ibuprofen analogue R1.5",
+      "smiles": "CC(C)c1ccc(C)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.665,
+        "solubility": 0.632,
+        "bbb": 0.612,
+        "herg": 0.469,
+        "sa": 0.666
+      },
+      "composite": 0.6124,
+      "round": 1
+    },
+    {
+      "id": "r2-c1",
+      "display_name": "Ibuprofen analogue R2.1",
+      "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.68,
+        "solubility": 0.747,
+        "bbb": 0.651,
+        "herg": 0.452,
+        "sa": 0.76
+      },
+      "composite": 0.6544,
+      "round": 2
+    },
+    {
+      "id": "r2-c2",
+      "display_name": "Ibuprofen analogue R2.2",
+      "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+      "scores": {
+        "affinity": 0.596,
+        "solubility": 0.726,
+        "bbb": 0.608,
+        "herg": 0.488,
+        "sa": 0.688
+      },
+      "composite": 0.6139,
+      "round": 2
+    },
+    {
+      "id": "r2-c3",
+      "display_name": "Ibuprofen analogue R2.3",
+      "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.668,
+        "solubility": 0.694,
+        "bbb": 0.686,
+        "herg": 0.385,
+        "sa": 0.657
+      },
+      "composite": 0.6246,
+      "round": 2
+    },
+    {
+      "id": "r2-c4",
+      "display_name": "Ibuprofen analogue R2.4",
+      "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+      "scores": {
+        "affinity": 0.654,
+        "solubility": 0.756,
+        "bbb": 0.672,
+        "herg": 0.459,
+        "sa": 0.734
+      },
+      "composite": 0.6509,
+      "round": 2
+    },
+    {
+      "id": "r2-c5",
+      "display_name": "Ibuprofen analogue R2.5",
+      "smiles": "CC(C)c1ccc(C)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.665,
+        "solubility": 0.632,
+        "bbb": 0.612,
+        "herg": 0.469,
+        "sa": 0.666
+      },
+      "composite": 0.6124,
+      "round": 2
+    },
+    {
+      "id": "r3-c1",
+      "display_name": "Ibuprofen analogue R3.1",
+      "smiles": "COc1ccc(cc1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.578,
+        "solubility": 0.753,
+        "bbb": 0.538,
+        "herg": 0.541,
+        "sa": 0.682
+      },
+      "composite": 0.6076,
+      "round": 3
+    },
+    {
+      "id": "r3-c2",
+      "display_name": "Ibuprofen analogue R3.2",
+      "smiles": "CC(C)c1ccncc1C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.657,
+        "solubility": 0.746,
+        "bbb": 0.58,
+        "herg": 0.536,
+        "sa": 0.746
+      },
+      "composite": 0.6458,
+      "round": 3
+    },
+    {
+      "id": "r3-c3",
+      "display_name": "Ibuprofen analogue R3.3",
+      "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+      "scores": {
+        "affinity": 0.596,
+        "solubility": 0.726,
+        "bbb": 0.608,
+        "herg": 0.488,
+        "sa": 0.688
+      },
+      "composite": 0.6139,
+      "round": 3
+    },
+    {
+      "id": "r3-c4",
+      "display_name": "Ibuprofen analogue R3.4",
+      "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.668,
+        "solubility": 0.694,
+        "bbb": 0.686,
+        "herg": 0.385,
+        "sa": 0.657
+      },
+      "composite": 0.6246,
+      "round": 3
+    },
+    {
+      "id": "r3-c5",
+      "display_name": "Ibuprofen analogue R3.5",
+      "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+      "scores": {
+        "affinity": 0.654,
+        "solubility": 0.756,
+        "bbb": 0.672,
+        "herg": 0.459,
+        "sa": 0.734
+      },
+      "composite": 0.6509,
+      "round": 3
+    },
+    {
+      "id": "r4-c1",
+      "display_name": "Ibuprofen analogue R4.1",
+      "smiles": "CC(C)c1ccc(C)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.665,
+        "solubility": 0.632,
+        "bbb": 0.612,
+        "herg": 0.469,
+        "sa": 0.666
+      },
+      "composite": 0.6124,
+      "round": 4
+    },
+    {
+      "id": "r4-c2",
+      "display_name": "Ibuprofen analogue R4.2",
+      "smiles": "CC(C)c1ccc(F)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.722,
+        "solubility": 0.628,
+        "bbb": 0.644,
+        "herg": 0.362,
+        "sa": 0.762
+      },
+      "composite": 0.6274,
+      "round": 4
+    },
+    {
+      "id": "r4-c3",
+      "display_name": "Ibuprofen analogue R4.3",
+      "smiles": "CC(C)c1ccc(O)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.602,
+        "solubility": 0.703,
+        "bbb": 0.598,
+        "herg": 0.44,
+        "sa": 0.724
+      },
+      "composite": 0.6046,
+      "round": 4
+    },
+    {
+      "id": "r4-c4",
+      "display_name": "Ibuprofen analogue R4.4",
+      "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)S",
+      "scores": {
+        "affinity": 0.587,
+        "solubility": 0.592,
+        "bbb": 0.682,
+        "herg": 0.377,
+        "sa": 0.688
+      },
+      "composite": 0.5812,
+      "round": 4
+    },
+    {
+      "id": "r4-c5",
+      "display_name": "Ibuprofen analogue R4.5",
+      "smiles": "CC(C)c1ccc(cc1F)CC(=O)O",
+      "scores": {
+        "affinity": 0.707,
+        "solubility": 0.719,
+        "bbb": 0.61,
+        "herg": 0.469,
+        "sa": 0.725
+      },
+      "composite": 0.6481,
+      "round": 4
+    },
+    {
+      "id": "r4-c6",
+      "display_name": "Ibuprofen analogue R4.6",
+      "smiles": "CC(C)c1ccc(cc1)C(O)C(=O)O",
+      "scores": {
+        "affinity": 0.679,
+        "solubility": 0.709,
+        "bbb": 0.569,
+        "herg": 0.499,
+        "sa": 0.711
+      },
+      "composite": 0.6327,
+      "round": 4
+    },
+    {
+      "id": "r5-c1",
+      "display_name": "Ibuprofen analogue R5.1",
+      "smiles": "CC(C)c1ccncc1C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.657,
+        "solubility": 0.746,
+        "bbb": 0.58,
+        "herg": 0.536,
+        "sa": 0.746
+      },
+      "composite": 0.6458,
+      "round": 5
+    },
+    {
+      "id": "r5-c2",
+      "display_name": "Ibuprofen analogue R5.2",
+      "smiles": "CC(C)c1ccc(OC)c(c1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.68,
+        "solubility": 0.747,
+        "bbb": 0.651,
+        "herg": 0.452,
+        "sa": 0.76
+      },
+      "composite": 0.6544,
+      "round": 5
+    },
+    {
+      "id": "r5-c3",
+      "display_name": "Ibuprofen analogue R5.3",
+      "smiles": "CC(C)c1ccc(cc1)C(N)C(=O)O",
+      "scores": {
+        "affinity": 0.596,
+        "solubility": 0.726,
+        "bbb": 0.608,
+        "herg": 0.488,
+        "sa": 0.688
+      },
+      "composite": 0.6139,
+      "round": 5
+    },
+    {
+      "id": "r5-c4",
+      "display_name": "Ibuprofen analogue R5.4",
+      "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+      "scores": {
+        "affinity": 0.668,
+        "solubility": 0.694,
+        "bbb": 0.686,
+        "herg": 0.385,
+        "sa": 0.657
+      },
+      "composite": 0.6246,
+      "round": 5
+    },
+    {
+      "id": "r5-c5",
+      "display_name": "Ibuprofen analogue R5.5",
+      "smiles": "CC(C)c1ccc(cc1)CC(=O)O",
+      "scores": {
+        "affinity": 0.654,
+        "solubility": 0.756,
+        "bbb": 0.672,
+        "herg": 0.459,
+        "sa": 0.734
+      },
+      "composite": 0.6509,
+      "round": 5
+    },
+    {
+      "id": "r5-c6",
+      "display_name": "Ibuprofen analogue R5.6",
+      "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+      "scores": {
+        "affinity": 0.727,
+        "solubility": 0.695,
+        "bbb": 0.652,
+        "herg": 0.417,
+        "sa": 0.741
+      },
+      "composite": 0.6509,
+      "round": 5
+    }
+  ],
+  "final": {
+    "id": "r5-c6",
+    "display_name": "Ibuprofen analogue R5.6",
+    "smiles": "CC(C)c1ccc(cc1)C(F)C(=O)O",
+    "scores": {
+      "affinity": 0.727,
+      "solubility": 0.695,
+      "bbb": 0.652,
+      "herg": 0.417,
+      "sa": 0.741
+    },
+    "composite": 0.6509
+  }
+}

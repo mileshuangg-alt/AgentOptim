@@ -1,0 +1,21 @@
+[
+  {
+    "id": "pubchem-3559",
+    "name": "Haloperidol",
+    "aliases": ["Haldol", "Haloperidolum"],
+    "target": "DRD2",
+    "pubchem_cid": 3559,
+    "smiles": "O=C(CCCN1CCC(O)(c2ccc(Cl)cc2)CC1)c1ccc(F)cc1",
+    "structure_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3559/PNG"
+  },
+  {
+    "id": "pubchem-3672",
+    "name": "Ibuprofen",
+    "aliases": ["Advil", "Motrin"],
+    "target": "COX-1 / COX-2",
+    "pubchem_cid": 3672,
+    "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
+    "structure_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3672/PNG",
+    "run_file": "ibuprofen.json"
+  }
+]

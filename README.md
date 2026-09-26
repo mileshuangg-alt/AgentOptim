@@ -10,6 +10,7 @@ PubChem for any compound and build a new target program around its structure.
 pip install -r requirements.txt
 python -m core.loop --rounds 5 --out demo_run.json   # run + cache
 streamlit run frontend/app.py                        # manual round-by-round review
+python -m scripts.serve_static                       # original static presentation
 python -m frontend.plots demo_run.json figures/      # no-UI fallback
 pytest -q
 ```
@@ -47,6 +48,13 @@ round only when the user clicks **Complete round**. It includes:
 Agent confidence reports how clearly the agent's scoring rule separates its
 choice from the alternatives in that round. It is bounded at 95% and is not a
 calibrated estimate of model accuracy or experimental success.
+
+The original cream-and-green presentation is also retained as a dependency-free
+static replay at `http://127.0.0.1:8000/static/index.html`. It uses the cached
+Haloperidol and Ibuprofen runs in `static_runs/`, keeps the desktop card layout,
+and switches to a compact grid on narrow screens. The round badge has its own
+grid row so it cannot overlap the analogue title, while long SMILES wrap inside
+the card.
 
 For DRD2, the run uses PyTDC when available and otherwise labels the DRD2
 similarity fallback. For every other target, it uses similarity to the selected
