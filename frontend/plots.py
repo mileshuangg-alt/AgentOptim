@@ -16,7 +16,6 @@ import matplotlib
 matplotlib.use("Agg")  # before pyplot: no display in a container or on a demo laptop
 import matplotlib.pyplot as plt  # noqa: E402
 
-from core.contract import AXES  # noqa: E402
 from core.loop import pareto_front  # noqa: E402
 
 AXIS_LABELS = {
@@ -26,6 +25,8 @@ AXIS_LABELS = {
     "herg": "hERG safety",
     "sa": "synthesisability",
 }
+
+PROFILE_AXES = ("affinity", "solubility", "herg", "sa")
 
 VETO_COLOUR = "#c1121f"
 FINAL_COLOUR = "#1d3557"
@@ -129,19 +130,19 @@ def pareto_figure(run: dict, axes: tuple[str, str] | None = None, figsize=(6.4, 
 
 def score_bars_figure(current: dict, previous: dict | None = None,
                       figsize=(6.4, 3.2), labels: dict | None = None):
-    """Five bars 0-1, with the previous round ghosted in grey behind."""
+    """Four interpretable bars, with the previous round ghosted in grey."""
     figure, axis = plt.subplots(figsize=figsize)
-    positions = range(len(AXES))
+    positions = range(len(PROFILE_AXES))
     axis_labels = labels or AXIS_LABELS
-    tick_labels = [axis_labels.get(a, a) for a in AXES]
+    tick_labels = [axis_labels.get(a, a) for a in PROFILE_AXES]
 
     if previous:
         axis.bar(
-            positions, [previous["normalised"][a] for a in AXES],
+            positions, [previous["normalised"][a] for a in PROFILE_AXES],
             color=EARLY_COLOUR, alpha=0.55, width=0.72, label="previous round",
         )
     axis.bar(
-        positions, [current["normalised"][a] for a in AXES],
+        positions, [current["normalised"][a] for a in PROFILE_AXES],
         color=FINAL_COLOUR, width=0.44, label="current",
     )
     axis.set_xticks(list(positions))

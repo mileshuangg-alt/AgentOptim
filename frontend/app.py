@@ -15,12 +15,13 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from core.contract import AXES, canonical
+from core.contract import canonical
 from core.drugs import DRUGS, HALOPERIDOL, Drug, from_pubchem
 from core.loop import run
 from core.pubchem import PubChemError, fetch_compound, search_names
 from frontend.molecule3d import viewer_html
 from frontend.plots import (
+    PROFILE_AXES,
     axis_labels_for_run,
     molecule_png,
     pareto_figure,
@@ -524,8 +525,8 @@ def main() -> None:
     seed_norm = run_record["history"][0]["normalised"]
 
     st.subheader(f"Round {selected} selected analogue")
-    metric_columns = st.columns(5)
-    for column, axis in zip(metric_columns, AXES):
+    metric_columns = st.columns(len(PROFILE_AXES))
+    for column, axis in zip(metric_columns, PROFILE_AXES):
         column.metric(
             labels[axis],
             f"{chosen['normalised'][axis]:.2f}",

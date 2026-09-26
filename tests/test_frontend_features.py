@@ -7,6 +7,7 @@ from pathlib import Path
 
 from core.drugs import HALOPERIDOL, IBUPROFEN, search
 from frontend.molecule3d import molecule_payload, viewer_html
+from frontend.plots import PROFILE_AXES, score_bars_figure
 from frontend.science import candidate_reviews, recommended_assays
 
 
@@ -72,3 +73,16 @@ def test_similarity_program_always_requests_target_engagement():
     )
     assert assays[1]["name"] == "COX-2 target-engagement assay"
     assert "does not establish potency" in assays[1]["why"]
+
+
+def test_optimization_profile_omits_bbb_from_the_visible_chart():
+    import matplotlib.pyplot as plt
+
+    seed = json.loads(Path("demo_run.json").read_text())["history"][0]
+    figure = score_bars_figure(seed)
+    labels = [tick.get_text() for tick in figure.axes[0].get_xticklabels()]
+
+    assert PROFILE_AXES == ("affinity", "solubility", "herg", "sa")
+    assert len(figure.axes[0].patches) == len(PROFILE_AXES)
+    assert all("BBB" not in label for label in labels)
+    plt.close(figure)
