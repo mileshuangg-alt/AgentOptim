@@ -8,7 +8,7 @@ Seed: haloperidol. Target: DRD2.
 ```bash
 pip install -r requirements.txt
 python -m core.loop --rounds 5 --out demo_run.json   # run + cache
-streamlit run frontend/app.py                        # replay the cache
+streamlit run frontend/app.py                        # manual round-by-round review
 python -m frontend.plots demo_run.json figures/      # no-UI fallback
 pytest -q
 ```
@@ -16,6 +16,32 @@ pytest -q
 Everything runs offline. No API key, no network: the agents fall back to
 deterministic verdicts and the edit engine to SMARTS mutations. Set
 `ANTHROPIC_API_KEY` to get LLM-written argument and LLM-proposed chemistry.
+AWS Bedrock is also supported through the same agent boundary:
+
+```bash
+export AGENT_LLM_PROVIDER=bedrock
+export AWS_REGION=us-east-1
+export BEDROCK_MODEL_ID='<a Converse-compatible model enabled in your account>'
+streamlit run frontend/app.py
+```
+
+The AWS CLI is optional. Boto3 uses its normal environment, profile, SSO, or
+instance-role credential chain. Install `boto3` separately when using Bedrock.
+
+The Streamlit interface begins at the named starting drug and unlocks each
+round only when the user clicks **Complete round**. It includes:
+
+- a prominent target, rationale, optimization goal, and hard-constraint panel;
+- RDKit 2D structures and a draggable, zoomable 3D conformer;
+- MCS-based highlighting of edited atoms and deletion attachment sites;
+- ADMET changes, agent transcript, and a Pareto front through completed rounds;
+- expandable candidate reviews with each edit and agent-specific rejection;
+- wet-lab assay suggestions tied to the predicted property changes.
+
+Compound lookup includes Haloperidol/Haldol and Ibuprofen/Advil/Motrin.
+Ibuprofen is inspectable but deliberately not optimizable: this repository has
+a DRD2 activity oracle and no COX oracle, so treating DRD2 similarity as
+Ibuprofen target activity would be scientifically misleading.
 
 ---
 
@@ -144,6 +170,9 @@ numbers.
 | `core/agents.py` | three specialists, the veto, the orchestrator |
 | `core/loop.py` | the round loop, Pareto front, hypervolume, ablation arms |
 | `frontend/app.py` | Streamlit demo; replays `demo_run.json` |
+| `frontend/molecule3d.py` | offline RDKit conformer viewer and MCS edit highlighting |
+| `frontend/science.py` | candidate explanations and wet-lab assay suggestions |
+| `core/drugs.py` | scientist-facing compound lookup and target rationale |
 | `frontend/plots.py` | headless figures — the cut-list fallback |
 | `scripts/verify_models.py` | **the gate.** Run before trusting the models |
 | `scripts/ablation.py` | the three-arm comparison above |
@@ -154,6 +183,9 @@ numbers.
 | variable | effect |
 |---|---|
 | `ANTHROPIC_API_KEY` | absent → deterministic agents and mutation-only edits |
+| `AGENT_LLM_PROVIDER` | `anthropic` (default) or `bedrock` |
+| `BEDROCK_MODEL_ID` | Converse-compatible Bedrock model ID |
+| `AWS_REGION` | Bedrock region; defaults to `us-east-1` |
 | `AGENT_LLM=off` | force deterministic agents even with a key |
 | `EDIT_ENGINE=mutation` | force SMARTS mutations, skip the LLM tier |
 | `ADMET_BACKEND` | `xgboost` (fail if absent) or `surrogate` (force) |
