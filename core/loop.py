@@ -18,26 +18,21 @@ import os
 import time
 from pathlib import Path
 
-from core import agents, edits
+from core import agents, edits, oracles
 from core.contract import AXES, canonical, normalize
-from core.oracles import provenance, score
 
 HALOPERIDOL = "O=C(CCCN1CCC(O)(c2ccc(Cl)cc2)CC1)c1ccc(F)cc1"
 
 # Axes the demo plots and measures movement on.
 #
-# NOT affinity. Haloperidol is a marketed antipsychotic and sits at the ceiling
-# of any DRD2 activity oracle, so the affinity axis has no headroom above the
-# seed: every edit can only lose potency, and a front seeded in the corner of
-# that axis cannot move outward. Solubility and hERG safety are haloperidol's
-# actual liabilities -- 0.24 and 0.44 normalised -- and they are where a real
-# programme would work. Affinity is defended as a constraint instead: it carries
-# the largest orchestrator weight and the affinity agent objects when it slips.
+# NOT affinity. The starting compound is the ceiling of seed-similarity mode,
+# and many validated activity oracles also place a known lead near the top.
+# That leaves little headroom on the activity axis. Solubility and hERG safety
+# remain useful cross-program developability axes, while target retention is
+# defended as a constraint.
 PARETO_AXES = ("solubility", "herg")
 
-# Potency the optimisation is expected to hold. Reported, not enforced: a run
-# that drifts below this has traded away the thing that made the seed a lead,
-# and the summary should say so out loud rather than bury it.
+# Target activity or structural retention the optimization is expected to hold.
 AFFINITY_FLOOR = 0.60
 
 # How far below the incumbent a candidate may score and still be accepted.
@@ -66,13 +61,19 @@ ACCEPT_TOLERANCE = 0.03
 FEEDBACK_RULE = "weakest"
 
 
-def evaluate(smiles: str) -> dict:
+def evaluate(smiles: str, scoring_context=None,
+             bbb_goal: str = "penetrate") -> dict:
     """One molecule as the loop passes it around: raw, normalised, provenance."""
-    raw = score(smiles)
+    raw = oracles.score(smiles, context=scoring_context)
+    normalised = normalize(raw)
+    if bbb_goal == "avoid":
+        normalised["bbb"] = 1.0 - normalised["bbb"]
+    elif bbb_goal == "neutral":
+        normalised["bbb"] = 0.5
     return {
         "smiles": canonical(smiles),
         "raw": {axis: raw[axis] for axis in AXES},
-        "normalised": normalize(raw),
+        "normalised": normalised,
     }
 
 
@@ -159,7 +160,8 @@ GENERIC_SYSTEM = (
 
 
 def _generic_decision(parent: dict, candidates: list[dict],
-                      constrained: bool = False) -> tuple[list[dict], dict]:
+                      constrained: bool = False,
+                      program: dict | None = None) -> tuple[list[dict], dict]:
     """The ablation arms: one agent weighing everything, with or without the
     hard constraints.
 
@@ -223,8 +225,16 @@ def _generic_decision(parent: dict, candidates: list[dict],
         "forced_second_best": False,
         "vetoed": vetoed,
     }
+    program = program or {}
+    target = program.get("target") or "DRD2"
+    system = (
+        f"You are a medicinal chemist optimizing a lead against {target}. "
+        f"{program.get('rationale', '')} {program.get('activity_strategy', '')} "
+        "Weigh target retention, solubility, the stated BBB exposure goal, hERG "
+        "risk, and synthetic accessibility."
+    )
     payload = complete_json(
-        system=GENERIC_SYSTEM,
+        system=system if program else GENERIC_SYSTEM,
         user=(
             f"Parent: {parent['smiles']}\n\nCandidates:\n"
             + agents._candidate_table(candidates)
@@ -245,10 +255,37 @@ def _generic_decision(parent: dict, candidates: list[dict],
 
 def run(seed: str = HALOPERIDOL, rounds: int = 5, mode: str = "specialists",
         n_candidates: int = 6, rng_seed: int | None = 0,
-        verbose: bool = True) -> dict:
+        verbose: bool = True, target: str = "DRD2",
+        compound_name: str = "Haloperidol", rationale: str | None = None,
+        objective: str | None = None, bbb_goal: str = "penetrate",
+        source: str = "Curated example") -> dict:
     """Run the loop and return a record suitable for `demo_run.json`."""
+    target = (target or "").strip()
+    if not target:
+        raise ValueError("a target or phenotype is required")
+    if bbb_goal not in {"penetrate", "avoid", "neutral"}:
+        raise ValueError("bbb_goal must be 'penetrate', 'avoid', or 'neutral'")
+    rationale = (rationale or "").strip() or (
+        f"{compound_name} is the starting structure for a program against {target}."
+    )
+    objective = (objective or "").strip() or (
+        f"Preserve target-relevant chemistry for {target} while improving "
+        "solubility, hERG safety, and synthetic accessibility."
+    )
+    scoring_context = oracles.for_program(seed, target)
+    program = {
+        "compound": compound_name,
+        "source": source,
+        "target": target,
+        "rationale": rationale,
+        "objective": objective,
+        "bbb_goal": bbb_goal,
+        "activity_strategy": scoring_context.activity_note,
+    }
+    specialists = agents.specialists_for_program(program)
+
     started = time.time()
-    parent = evaluate(seed)
+    parent = evaluate(seed, scoring_context, bbb_goal)
     history = [dict(parent, round=0, origin="seed")]
     seen = {parent["smiles"]}
     round_records = []
@@ -272,6 +309,11 @@ def run(seed: str = HALOPERIDOL, rounds: int = 5, mode: str = "specialists",
                 axis
                 for axis, value in sorted(parent["normalised"].items(), key=lambda kv: kv[1])[:2]
             ),
+            "target": target,
+            "target_rationale": rationale,
+            "objective": objective,
+            "bbb_goal": bbb_goal,
+            "activity_strategy": scoring_context.activity_note,
         }
         proposals = edits.propose(parent["smiles"], context)
         mutation_log = dict(edits.MUTATION_LOG)
@@ -279,7 +321,7 @@ def run(seed: str = HALOPERIDOL, rounds: int = 5, mode: str = "specialists",
         candidates = []
         for smiles in proposals:
             try:
-                candidate = evaluate(smiles)
+                candidate = evaluate(smiles, scoring_context, bbb_goal)
             except ValueError:
                 continue  # belt and braces; propose() already validated
             transform, intent = mutation_log.get(smiles, ("unknown", ""))
@@ -293,12 +335,15 @@ def run(seed: str = HALOPERIDOL, rounds: int = 5, mode: str = "specialists",
 
         if mode.startswith("generic"):
             reviews, decision = _generic_decision(
-                parent, candidates, constrained=(mode == "generic_constrained")
+                parent,
+                candidates,
+                constrained=(mode == "generic_constrained"),
+                program=program,
             )
         else:
             reviews = [
                 specialist.review(parent, candidates, leader)
-                for specialist in agents.SPECIALISTS
+                for specialist in specialists
             ]
             decision = agents.orchestrate(
                 parent,
@@ -312,6 +357,7 @@ def run(seed: str = HALOPERIDOL, rounds: int = 5, mode: str = "specialists",
                 allow_parent=False,
                 accept_tolerance=ACCEPT_TOLERANCE,
                 affinity_floor=AFFINITY_FLOOR,
+                program=program,
             )
 
         for candidate in candidates:
@@ -355,11 +401,12 @@ def run(seed: str = HALOPERIDOL, rounds: int = 5, mode: str = "specialists",
     )
     seed_record = history[0]
     return {
-        "target": "DRD2",
+        "target": target,
+        "program": program,
         "seed": canonical(seed),
         "mode": mode,
         "rounds": len(round_records),
-        "provenance": provenance(),
+        "provenance": scoring_context.provenance(),
         "affinity_floor": AFFINITY_FLOOR,
         "affinity_seed": seed_record["normalised"]["affinity"],
         "affinity_final": parent["normalised"]["affinity"],
@@ -397,8 +444,19 @@ def _print_round(record: dict) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="DRD2 multi-agent lead optimisation")
+    parser = argparse.ArgumentParser(
+        description="target-aware multi-agent lead optimisation"
+    )
     parser.add_argument("--seed", default=HALOPERIDOL, help="seed SMILES")
+    parser.add_argument("--compound-name", default="Haloperidol")
+    parser.add_argument("--target", default="DRD2")
+    parser.add_argument("--rationale")
+    parser.add_argument("--objective")
+    parser.add_argument(
+        "--bbb-goal",
+        choices=("penetrate", "avoid", "neutral"),
+        default="penetrate",
+    )
     parser.add_argument("--rounds", type=int, default=5)
     parser.add_argument(
         "--mode",
@@ -418,6 +476,11 @@ def main() -> None:
         n_candidates=args.candidates,
         rng_seed=args.rng_seed,
         verbose=not args.quiet,
+        target=args.target,
+        compound_name=args.compound_name,
+        rationale=args.rationale,
+        objective=args.objective,
+        bbb_goal=args.bbb_goal,
     )
     Path(args.out).write_text(json.dumps(record, indent=2))
 
@@ -432,7 +495,8 @@ def main() -> None:
     )
     verdict = "held" if record["affinity_held"] else "LOST"
     print(
-        f"affinity {record['affinity_seed']:.2f} -> {record['affinity_final']:.2f} "
+        f"target retention {record['affinity_seed']:.2f} -> "
+        f"{record['affinity_final']:.2f} "
         f"(floor {record['affinity_floor']:.2f}: {verdict})"
     )
     if not record["affinity_held"]:

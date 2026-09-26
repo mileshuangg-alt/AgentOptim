@@ -15,6 +15,10 @@ class Drug:
     objective: str
     optimizable: bool
     limitation: str = ""
+    source: str = "Curated example"
+    pubchem_cid: int | None = None
+    bbb_goal: str = "penetrate"
+    original_smiles: str = ""
 
 
 HALOPERIDOL = Drug(
@@ -46,12 +50,12 @@ IBUPROFEN = Drug(
         "A COX programme would preserve enzyme inhibition while improving "
         "solubility, selectivity, safety, and synthetic accessibility."
     ),
-    optimizable=False,
+    optimizable=True,
     limitation=(
-        "This repository has a DRD2 affinity oracle, not a COX-1/COX-2 oracle. "
-        "Ibuprofen can be inspected, but optimization is disabled to avoid "
-        "presenting DRD2 similarity as COX activity."
+        "No validated COX-1/COX-2 activity oracle is connected. Optimization "
+        "uses similarity to ibuprofen only as a scaffold-retention proxy."
     ),
+    bbb_goal="avoid",
 )
 
 DRUGS = (HALOPERIDOL, IBUPROFEN)
@@ -67,3 +71,35 @@ def search(query: str) -> list[Drug]:
         if query in drug.name.lower()
         or any(query in alias.lower() for alias in drug.aliases)
     ]
+
+
+def from_pubchem(compound) -> Drug:
+    """Create an editable target program around a PubChem structure."""
+    fragment_note = (
+        " PubChem returned multiple fragments; the largest fragment is used "
+        "for scoring and optimization."
+        if compound.original_smiles
+        and compound.original_smiles != compound.smiles
+        else ""
+    )
+    return Drug(
+        name=compound.name,
+        aliases=(),
+        smiles=compound.smiles,
+        target="",
+        rationale="",
+        objective=(
+            "Preserve the starting scaffold while improving solubility, hERG "
+            "safety, and synthetic accessibility for the selected target program."
+        ),
+        optimizable=True,
+        limitation=(
+            "A target-specific activity oracle has not been connected for this "
+            "compound. The run will use starting-structure similarity as an "
+            f"explicitly labelled activity-retention proxy.{fragment_note}"
+        ),
+        source=f"PubChem CID {compound.cid}",
+        pubchem_cid=compound.cid,
+        bbb_goal="neutral",
+        original_smiles=compound.original_smiles,
+    )

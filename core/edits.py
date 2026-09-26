@@ -153,6 +153,11 @@ def _llm_propose(parent: str, context: dict, n: int) -> list[str]:
     scores = context.get("scores") or {}
     prompt = (
         f"Parent molecule (SMILES): {parent}\n"
+        f"Target or phenotype: {context.get('target', 'not supplied')}\n"
+        f"Why this target: {context.get('target_rationale', 'not supplied')}\n"
+        f"Program objective: {context.get('objective', 'not supplied')}\n"
+        f"Activity evidence: {context.get('activity_strategy', 'not supplied')}\n"
+        f"BBB exposure goal: {context.get('bbb_goal', 'penetrate')}\n"
         f"Round: {context.get('round', 1)}\n"
         f"Current normalised scores (0-1, higher better): {scores}\n"
         f"Specialist agent notes from the previous round:\n{notes or '- none yet'}\n\n"

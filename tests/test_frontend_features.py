@@ -17,8 +17,8 @@ def test_drug_lookup_supports_generic_and_brand_names():
     assert search("haloperidol") == [HALOPERIDOL]
     assert search("Haldol") == [HALOPERIDOL]
     assert search("Advil") == [IBUPROFEN]
-    assert IBUPROFEN.optimizable is False
-    assert "COX" in IBUPROFEN.limitation
+    assert IBUPROFEN.optimizable is True
+    assert "proxy" in IBUPROFEN.limitation
     assert rdMolDescriptors.CalcMolFormula(
         Chem.MolFromSmiles(IBUPROFEN.smiles)
     ) == "C13H18O2"
@@ -43,7 +43,7 @@ def test_candidate_review_explains_changes_and_rejections():
         "Orchestrator",
     ]
     assert all(
-        candidate["change"] and candidate["reason"]
+        candidate["change"] and candidate["reason"] and candidate["target_context"]
         for review in reviews
         for candidate in review["candidates"]
     )
@@ -58,3 +58,17 @@ def test_round_assays_always_start_with_identity_and_purity():
     assays = recommended_assays(record)
     assert assays[0]["name"] == "LC–MS identity and purity"
     assert 1 <= len(assays) <= 4
+
+
+def test_similarity_program_always_requests_target_engagement():
+    record = json.loads(Path("demo_run.json").read_text())["round_records"][0]
+    assays = recommended_assays(
+        record,
+        {
+            "target": "COX-2",
+            "bbb_goal": "avoid",
+            "activity_strategy": "Tanimoto seed similarity proxy.",
+        },
+    )
+    assert assays[1]["name"] == "COX-2 target-engagement assay"
+    assert "does not establish potency" in assays[1]["why"]

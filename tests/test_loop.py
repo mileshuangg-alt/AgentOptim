@@ -97,6 +97,29 @@ def test_run_record_is_json_serialisable(run_record):
     assert restored["final"]["smiles"] == run_record["final"]["smiles"]
 
 
+def test_arbitrary_target_uses_seed_similarity_and_records_justification():
+    ibuprofen = "CC(C)Cc1ccc(cc1)C(C)C(=O)O"
+    record = loop.run(
+        seed=ibuprofen,
+        rounds=1,
+        verbose=False,
+        target="COX-2",
+        compound_name="Ibuprofen",
+        rationale="COX-2 drives inflammatory prostaglandin synthesis.",
+        objective="Retain COX-2 activity while improving developability.",
+        bbb_goal="avoid",
+    )
+
+    assert record["target"] == "COX-2"
+    assert record["program"]["rationale"].startswith("COX-2")
+    assert record["program"]["bbb_goal"] == "avoid"
+    assert record["provenance"]["affinity"] == "seed-similarity"
+    assert record["history"][0]["normalised"]["affinity"] == pytest.approx(1.0)
+    assert record["history"][0]["normalised"]["bbb"] == pytest.approx(
+        1.0 - record["history"][0]["raw"]["bbb"]
+    )
+
+
 def test_provenance_marks_the_surrogate_backend(run_record):
     """The surrogate must never be able to pass itself off as a trained model."""
     assert run_record["provenance"]["any_surrogate"] is True

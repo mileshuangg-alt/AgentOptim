@@ -20,7 +20,7 @@ from core.contract import AXES  # noqa: E402
 from core.loop import pareto_front  # noqa: E402
 
 AXIS_LABELS = {
-    "affinity": "DRD2 affinity",
+    "affinity": "target retention",
     "solubility": "solubility",
     "bbb": "BBB penetration",
     "herg": "hERG safety",
@@ -32,6 +32,19 @@ FINAL_COLOUR = "#1d3557"
 EARLY_COLOUR = "#adb5bd"
 
 
+def axis_labels_for_run(run: dict) -> dict:
+    """Labels that reflect the selected target and exposure objective."""
+    labels = dict(AXIS_LABELS)
+    program = run.get("program") or {}
+    target = program.get("target") or run.get("target") or "target"
+    labels["affinity"] = f"{target} retention"
+    labels["bbb"] = {
+        "avoid": "BBB avoidance",
+        "neutral": "BBB neutral",
+    }.get(program.get("bbb_goal"), "BBB penetration")
+    return labels
+
+
 def pareto_figure(run: dict, axes: tuple[str, str] | None = None, figsize=(6.4, 5.2)):
     """Round 1 in grey, the final round in colour, vetoed molecules marked.
 
@@ -41,6 +54,7 @@ def pareto_figure(run: dict, axes: tuple[str, str] | None = None, figsize=(6.4, 
     """
     axes = tuple(axes or run.get("pareto_axes") or ("solubility", "herg"))
     x_axis, y_axis = axes
+    labels = axis_labels_for_run(run)
     history = run["history"]
     last_round = max(h["round"] for h in history)
 
@@ -99,8 +113,8 @@ def pareto_figure(run: dict, axes: tuple[str, str] | None = None, figsize=(6.4, 
             label="seed", zorder=4,
         )
 
-    axis.set_xlabel(AXIS_LABELS.get(x_axis, x_axis) + "  (normalised, higher better)")
-    axis.set_ylabel(AXIS_LABELS.get(y_axis, y_axis) + "  (normalised, higher better)")
+    axis.set_xlabel(labels.get(x_axis, x_axis) + "  (normalised, higher better)")
+    axis.set_ylabel(labels.get(y_axis, y_axis) + "  (normalised, higher better)")
     axis.set_title(
         f"Pareto front, rounds 1-{last_round}"
         + ("   [SURROGATE ORACLES]" if run["provenance"]["any_surrogate"] else "")
@@ -113,11 +127,13 @@ def pareto_figure(run: dict, axes: tuple[str, str] | None = None, figsize=(6.4, 
     return figure
 
 
-def score_bars_figure(current: dict, previous: dict | None = None, figsize=(6.4, 3.2)):
+def score_bars_figure(current: dict, previous: dict | None = None,
+                      figsize=(6.4, 3.2), labels: dict | None = None):
     """Five bars 0-1, with the previous round ghosted in grey behind."""
     figure, axis = plt.subplots(figsize=figsize)
     positions = range(len(AXES))
-    labels = [AXIS_LABELS.get(a, a) for a in AXES]
+    axis_labels = labels or AXIS_LABELS
+    tick_labels = [axis_labels.get(a, a) for a in AXES]
 
     if previous:
         axis.bar(
@@ -129,7 +145,7 @@ def score_bars_figure(current: dict, previous: dict | None = None, figsize=(6.4,
         color=FINAL_COLOUR, width=0.44, label="current",
     )
     axis.set_xticks(list(positions))
-    axis.set_xticklabels(labels, fontsize=8, rotation=15)
+    axis.set_xticklabels(tick_labels, fontsize=8, rotation=15)
     axis.set_ylim(0, 1.0)
     axis.set_ylabel("normalised (higher better)")
     axis.grid(axis="y", alpha=0.25, linestyle=":")
@@ -159,7 +175,9 @@ def main() -> None:
     pareto_figure(run).savefig(out_dir / "pareto.png", dpi=160)
     rounds = run["round_records"]
     previous = rounds[0]["parent"] if rounds else None
-    score_bars_figure(run["final"], previous).savefig(out_dir / "scores.png", dpi=160)
+    score_bars_figure(
+        run["final"], previous, labels=axis_labels_for_run(run)
+    ).savefig(out_dir / "scores.png", dpi=160)
     molecule_png(run["seed"], out_dir / "seed.png")
     molecule_png(run["final"]["smiles"], out_dir / "final.png")
 

@@ -6,14 +6,16 @@ and are reached through the thin wrappers at the bottom of this file.
 
 Raw units (what `score()` returns):
 
-    affinity    0-1   DRD2 oracle, higher = more potent
+    affinity    0-1   target oracle or labelled structure-retention proxy
     solubility  logS  log10 mol/L, higher = more soluble
     bbb         0-1   P(blood-brain-barrier penetrant), higher = penetrant
     herg        0-1   P(hERG blockade), higher = MORE cardiotoxic
     sa          1-10  synthetic accessibility, LOWER = easier to make
 
 Normalised units (what `normalize()` returns): all five on 0-1 where
-higher is always better. `herg` and `sa` therefore invert.
+higher is always better. `herg` and `sa` therefore invert. A run may also
+invert BBB for a peripheral program or hold it neutral when CNS exposure is
+not an objective.
 """
 
 from __future__ import annotations

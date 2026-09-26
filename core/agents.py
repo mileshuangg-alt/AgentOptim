@@ -191,10 +191,13 @@ class SafetyAgent:
 
     def __init__(self, threshold: float = HERG_VETO_THRESHOLD,
                  mode: str = HERG_VETO_MODE,
-                 relative_margin: float = HERG_RELATIVE_MARGIN):
+                 relative_margin: float = HERG_RELATIVE_MARGIN,
+                 system: str | None = None):
         self.threshold = threshold
         self.mode = mode
         self.relative_margin = relative_margin
+        if system:
+            self.system = system
 
     def effective_line(self, parent) -> tuple[float, str]:
         """The safety floor for this round, and which rule produced it.
@@ -286,6 +289,57 @@ class SafetyAgent:
 SAFETY_AGENT = SafetyAgent()
 SPECIALISTS = (AFFINITY_AGENT, ADME_AGENT, SAFETY_AGENT)
 
+
+def specialists_for_program(program: dict) -> tuple:
+    """Create target-aware prompts while retaining deterministic agent logic."""
+    target = program.get("target") or "the selected target"
+    rationale = program.get("rationale") or "No target rationale was supplied."
+    activity_note = program.get("activity_strategy") or ""
+    bbb_goal = program.get("bbb_goal", "penetrate")
+    exposure = {
+        "penetrate": (
+            "The program requires CNS exposure, so higher predicted BBB "
+            "penetration is desirable."
+        ),
+        "avoid": (
+            "The program is peripheral, so lower predicted BBB penetration is "
+            "desirable. The supplied BBB score is already inverted to goal fit."
+        ),
+        "neutral": (
+            "BBB exposure is not a selection objective for this program; its "
+            "goal-fit score is held neutral."
+        ),
+    }.get(bbb_goal, "")
+    context = f"Target: {target}. Program rationale: {rationale}"
+
+    affinity = Specialist(
+        name="affinity",
+        axes=("affinity",),
+        label="Affinity",
+        system=(
+            f"You are the target-activity specialist for a lead program. {context} "
+            f"{activity_note} Defend retention of target-relevant chemistry and "
+            "state clearly when the activity score is only a structural proxy."
+        ),
+    )
+    adme = Specialist(
+        name="adme",
+        axes=("solubility", "bbb"),
+        label="ADME",
+        system=(
+            f"You are the ADME specialist for a lead program. {context} "
+            f"{exposure} Balance that exposure goal with aqueous solubility."
+        ),
+    )
+    safety = SafetyAgent(
+        system=(
+            f"You are the safety specialist for a lead program against {target}. "
+            "You are responsible for predicted hERG cardiotoxicity. Apply the "
+            "program's binding veto exactly and explain it concisely."
+        )
+    )
+    return affinity, adme, safety
+
 ORCHESTRATOR_SYSTEM = (
     "You are the orchestrator of a DRD2 lead optimisation team. Three specialists "
     "have reported: affinity, ADME, and safety. Safety holds a veto and its vetoes "
@@ -297,7 +351,8 @@ ORCHESTRATOR_SYSTEM = (
 
 
 def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
-                accept_tolerance: float = 0.0, affinity_floor: float = 0.0) -> dict:
+                accept_tolerance: float = 0.0, affinity_floor: float = 0.0,
+                program: dict | None = None) -> dict:
     """Pick one molecule from the non-vetoed candidates and explain the choice.
 
     Two hard constraints, and they are different in kind:
@@ -311,6 +366,13 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
     a number a reviewer can check. Safety's veto is a judgement call an agent
     makes and has to defend in the transcript.
     """
+    program = program or {}
+    target = program.get("target") or "the selected target"
+    activity_label = (
+        "target-retention score"
+        if "similarity" in (program.get("activity_strategy") or "").lower()
+        else "target activity"
+    )
     vetoed = set()
     for review in reviews:
         vetoed.update(review.get("vetoed") or [])
@@ -335,8 +397,8 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
             "rationale": (
                 f"No surviving candidate holds affinity at the programme floor of "
                 f"{_fmt(affinity_floor)}. Holding the incumbent: a more soluble, safer "
-                f"molecule that has stopped binding DRD2 is not a lead, and this round "
-                f"produced nothing else."
+                f"molecule that loses its {activity_label} for {target} is not a lead, "
+                f"and this round produced nothing else."
             ),
             "held_parent": True,
             "affinity_floor_breached": True,
@@ -402,8 +464,15 @@ def orchestrate(parent, candidates, reviews, allow_parent: bool = True,
         "vetoed": sorted(vetoed),
     }
 
+    orchestrator_system = (
+        f"You orchestrate a lead optimization program against {target}. "
+        f"{program.get('rationale', '')} Three specialists reported on target "
+        "retention, ADME, and safety. Safety vetoes are binding. Pick one surviving "
+        "candidate and explain the target-relevant trade-off, including the limits "
+        f"of the activity evidence. {program.get('activity_strategy', '')}"
+    )
     payload = complete_json(
-        system=ORCHESTRATOR_SYSTEM,
+        system=orchestrator_system if program else ORCHESTRATOR_SYSTEM,
         user=(
             f"Parent: {parent['smiles']}\n\n"
             f"Surviving candidates:\n{_candidate_table(survivors)}\n\n"

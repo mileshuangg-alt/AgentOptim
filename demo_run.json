@@ -1,10 +1,21 @@
 {
   "target": "DRD2",
+  "program": {
+    "compound": "Haloperidol",
+    "source": "Curated example",
+    "target": "DRD2",
+    "rationale": "DRD2 is a dopamine receptor central to antipsychotic activity. Haloperidol is a potent, clinically familiar starting scaffold.",
+    "objective": "Preserve DRD2 affinity and CNS exposure while improving solubility and hERG safety. Keep affinity above the programme floor.",
+    "bbb_goal": "penetrate",
+    "activity_strategy": "DRD2 activity is represented by similarity to a reference panel of known DRD2 ligands. This is a structural proxy, not an affinity model."
+  },
   "seed": "O=C(CCCN1CCC(O)(c2ccc(Cl)cc2)CC1)c1ccc(F)cc1",
   "mode": "specialists",
   "rounds": 5,
   "provenance": {
     "affinity": "surrogate-similarity",
+    "affinity_target": "DRD2",
+    "activity_note": "DRD2 activity is represented by similarity to a reference panel of known DRD2 ligands. This is a structural proxy, not an affinity model.",
     "solubility": "xgboost",
     "bbb": "xgboost",
     "herg": "xgboost",

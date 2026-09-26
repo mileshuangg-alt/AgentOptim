@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 .venv/
 figures/
+runs/
 models/*.json
 models/*.pkl
 !models/manifest.json

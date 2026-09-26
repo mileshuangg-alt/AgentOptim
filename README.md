@@ -1,9 +1,10 @@
-# AgentOptim — multi-agent lead optimisation on DRD2
+# AgentOptim — target-aware multi-agent lead optimisation
 
 Specialist LLM agents optimising a molecule across competing properties, with
 visible disagreement, a hard safety veto, and a Pareto front that moves.
 
-Seed: haloperidol. Target: DRD2.
+The bundled run uses haloperidol against DRD2. The Streamlit app can search
+PubChem for any compound and build a new target program around its structure.
 
 ```bash
 pip install -r requirements.txt
@@ -13,8 +14,9 @@ python -m frontend.plots demo_run.json figures/      # no-UI fallback
 pytest -q
 ```
 
-Everything runs offline. No API key, no network: the agents fall back to
-deterministic verdicts and the edit engine to SMARTS mutations. Set
+Optimization runs offline. PubChem search requires internet access, while the
+curated examples and cached runs do not. Without an API key, the agents use
+deterministic verdicts and the edit engine uses SMARTS mutations. Set
 `ANTHROPIC_API_KEY` to get LLM-written argument and LLM-proposed chemistry.
 AWS Bedrock is also supported through the same agent boundary:
 
@@ -32,16 +34,18 @@ The Streamlit interface begins at the named starting drug and unlocks each
 round only when the user clicks **Complete round**. It includes:
 
 - a prominent target, rationale, optimization goal, and hard-constraint panel;
+- PubChem name search with the returned CID and canonical structure;
+- required biological rationale and CNS exposure goal for each new program;
 - RDKit 2D structures and a draggable, zoomable 3D conformer;
 - MCS-based highlighting of edited atoms and deletion attachment sites;
 - ADMET changes, agent transcript, and a Pareto front through completed rounds;
 - expandable candidate reviews with each edit and agent-specific rejection;
 - wet-lab assay suggestions tied to the predicted property changes.
 
-Compound lookup includes Haloperidol/Haldol and Ibuprofen/Advil/Motrin.
-Ibuprofen is inspectable but deliberately not optimizable: this repository has
-a DRD2 activity oracle and no COX oracle, so treating DRD2 similarity as
-Ibuprofen target activity would be scientifically misleading.
+For DRD2, the run uses PyTDC when available and otherwise labels the DRD2
+similarity fallback. For every other target, it uses similarity to the selected
+starting structure only as a scaffold-retention proxy. The UI repeats that
+limitation in the mission panel, each candidate review, and wet-lab suggestions.
 
 ---
 
@@ -174,6 +178,7 @@ numbers.
 | `frontend/molecule3d.py` | offline RDKit conformer viewer and MCS edit highlighting |
 | `frontend/science.py` | candidate explanations and wet-lab assay suggestions |
 | `core/drugs.py` | scientist-facing compound lookup and target rationale |
+| `core/pubchem.py` | PubChem autocomplete and structure lookup |
 | `frontend/plots.py` | headless figures — the cut-list fallback |
 | `scripts/verify_models.py` | **the gate.** Run before trusting the models |
 | `scripts/ablation.py` | the three-arm comparison above |
@@ -203,10 +208,10 @@ chemistry. The agents generate molecules further out of distribution than that:
 interesting**, and nothing in this loop knows when it has walked off the
 training manifold.
 
-The similarity fallback is worse still, and worth understanding before it is
-shown: it decays monotonically as edits move away from the reference panel, so
-in that mode affinity can only ever fall. It scores chlorpromazine — a real
-DRD2 antagonist — at 0.29. It measures resemblance, not activity.
+The similarity fallbacks measure resemblance, not activity. DRD2 fallback mode
+compares against a known-ligand panel. Other targets compare against the
+selected starting compound to discourage scaffold drift. Neither establishes
+binding, selectivity, or functional potency.
 
 There is no docking, no free-energy calculation, and no synthesis check beyond
 an SA score. The real version closes the loop on in vitro assay data, and the
