@@ -21,12 +21,24 @@
       <div>
         <span class="eyebrow">STARTING COMPOUND LOOKUP</span>
         <h2>Find a drug</h2>
-        <p>Search the bundled compound index by generic or brand name.</p>
+        <p>Search PubChem by generic, brand, or compound name.</p>
         <form id="drugSearch">
           <input id="drugQuery" value="Haloperidol" aria-label="Drug name">
           <button type="submit">Search</button>
         </form>
         <div id="searchMessage"></div>
+        <div class="program-fields">
+          <label>Target or phenotype<input id="programTarget" placeholder="e.g. COX-2, EGFR"></label>
+          <label>Why this target matters<textarea id="programRationale" rows="2" placeholder="Disease or biological rationale"></textarea></label>
+          <label>Optimization objective<textarea id="programObjective" rows="2"></textarea></label>
+          <label>CNS exposure goal
+            <select id="programBbbGoal">
+              <option value="penetrate">Favor BBB penetration</option>
+              <option value="avoid">Favor peripheral restriction</option>
+              <option value="neutral">Do not optimize BBB exposure</option>
+            </select>
+          </label>
+        </div>
       </div>
       <div id="drugResult" class="drug-result">
         <img id="drugStructure" alt="2D structure of Haloperidol">
@@ -34,6 +46,7 @@
           <h3 id="drugName">Haloperidol</h3>
           <span id="drugTarget" class="target-pill">DRD2</span>
           <code id="drugSmiles"></code>
+          <a id="pubchemLink" target="_blank" rel="noreferrer"></a>
           <button id="runDrug">Run five optimization rounds</button>
         </div>
       </div>

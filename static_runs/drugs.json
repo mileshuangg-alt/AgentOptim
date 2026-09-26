@@ -4,15 +4,22 @@
     "name": "Haloperidol",
     "aliases": ["Haldol", "Haloperidolum"],
     "target": "DRD2",
+    "rationale": "DRD2 is a dopamine receptor central to antipsychotic activity; Haloperidol provides a clinically familiar, potent starting scaffold.",
+    "objective": "Preserve DRD2 affinity and brain penetration while improving solubility, hERG safety, and synthetic accessibility.",
+    "bbb_goal": "penetrate",
     "pubchem_cid": 3559,
     "smiles": "O=C(CCCN1CCC(O)(c2ccc(Cl)cc2)CC1)c1ccc(F)cc1",
-    "structure_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3559/PNG"
+    "structure_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3559/PNG",
+    "run_file": "haloperidol.json"
   },
   {
     "id": "pubchem-3672",
     "name": "Ibuprofen",
     "aliases": ["Advil", "Motrin"],
     "target": "COX-1 / COX-2",
+    "rationale": "COX-1 and COX-2 catalyze prostaglandin synthesis; Ibuprofen is a clinically familiar anti-inflammatory starting scaffold.",
+    "objective": "Preserve COX inhibition while improving solubility, cardiac safety, and synthetic accessibility.",
+    "bbb_goal": "avoid",
     "pubchem_cid": 3672,
     "smiles": "CC(C)c1ccc(cc1)C(C)C(=O)O",
     "structure_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3672/PNG",

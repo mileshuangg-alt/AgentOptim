@@ -217,10 +217,18 @@ function advance(){
   if(unlocked<run.rounds.length-1){unlocked++;document.querySelector(`.round-button[data-index="${unlocked}"]`).disabled=false;render(unlocked)}
 }
 function showDrug(drug){
-  selectedDrug=drug;el("drugName").textContent=drug.name;el("drugTarget").textContent=drug.target;
+  selectedDrug=drug;el("drugName").textContent=drug.name;
+  el("drugTarget").textContent=drug.target||`PubChem CID ${drug.pubchem_cid}`;
   el("drugSmiles").textContent=drug.smiles;el("drugStructure").src=drug.structure_url;
   el("drugStructure").onerror=()=>{el("drugStructure").alt=`Structure image unavailable; SMILES shown for ${drug.name}`};
+  el("pubchemLink").textContent=drug.source_url?"Open PubChem record ↗":"";
+  el("pubchemLink").href=drug.source_url||"";
+  el("programTarget").value=drug.target||"";
+  el("programRationale").value=drug.rationale||"";
+  el("programObjective").value=drug.objective||"Preserve target-relevant chemistry while improving solubility, hERG safety, and synthetic accessibility.";
+  el("programBbbGoal").value=drug.bbb_goal||"neutral";
   el("searchMessage").textContent="";el("seedName").textContent=drug.name;
+  el("runDrug").disabled=false;el("runDrug").textContent="Run five optimization rounds";
 }
 function installRun(data){
   run=data;unlocked=-1;current=-1;
@@ -231,10 +239,49 @@ function installRun(data){
   el("roundButtons").innerHTML=run.rounds.map((round,index)=>`<button class="round-button" data-index="${index}" disabled title="View completed round ${round.round}">${round.round}</button>`).join("");
   showSeed();
 }
-function searchDrug(query){
+async function searchDrug(query){
   const q=query.trim().toLowerCase();
   const found=drugs.find(d=>d.name.toLowerCase().includes(q)||(d.aliases||[]).some(a=>a.toLowerCase().includes(q)));
-  if(found)showDrug(found);else el("searchMessage").textContent=`No local match for “${query}”. Add the compound to fixtures/drugs.json.`;
+  if(found){showDrug(found);return}
+  if(q.length<2){el("searchMessage").textContent="Enter at least two characters.";return}
+  el("searchMessage").textContent=`Searching PubChem for “${query}”…`;
+  try{
+    const response=await fetch(`../api/pubchem/compound?name=${encodeURIComponent(query.trim())}`);
+    const payload=await response.json();
+    if(!response.ok)throw new Error(payload.error||"PubChem lookup failed.");
+    showDrug(payload);
+    const fragment=payload.original_smiles&&payload.original_smiles!==payload.smiles?" The largest fragment will be optimized.":"";
+    el("searchMessage").textContent=`Loaded ${payload.name} from PubChem CID ${payload.pubchem_cid}.${fragment}`;
+  }catch(error){
+    el("searchMessage").textContent=error.message;
+  }
+}
+async function runSelectedDrug(){
+  if(!selectedDrug)return;
+  const button=el("runDrug"),original=button.textContent;
+  button.disabled=true;button.textContent="Preparing five rounds…";el("searchMessage").textContent="";
+  try{
+    let response;
+    if(selectedDrug.run_file){
+      response=await fetch(`../static_runs/${selectedDrug.run_file}`);
+    }else{
+      const payload={
+        name:selectedDrug.name,smiles:selectedDrug.smiles,source:selectedDrug.source,
+        target:el("programTarget").value.trim(),
+        rationale:el("programRationale").value.trim(),
+        objective:el("programObjective").value.trim(),
+        bbb_goal:el("programBbbGoal").value
+      };
+      response=await fetch("../api/optimize",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+    }
+    const data=await response.json();
+    if(!response.ok)throw new Error(data.error||"Could not generate the optimization.");
+    installRun(data);el("searchMessage").textContent=`Five-round ${selectedDrug.name} run ready. Complete each round manually.`;
+  }catch(error){
+    el("searchMessage").textContent=error.message;
+  }finally{
+    button.disabled=false;button.textContent=original;
+  }
 }
 Promise.all([fetch("../static_runs/haloperidol.json").then(r=>r.json()),fetch("../static_runs/drugs.json").then(r=>r.json())]).then(([data,catalog])=>{
   drugs=catalog;showDrug(drugs[0]);
@@ -242,6 +289,6 @@ Promise.all([fetch("../static_runs/haloperidol.json").then(r=>r.json()),fetch(".
   el("previous").onclick=()=>{if(current>0)render(current-1);else showSeed(false)};
   el("next").onclick=advance;
   el("drugSearch").onsubmit=event=>{event.preventDefault();searchDrug(el("drugQuery").value)};
-  el("runDrug").onclick=()=>{const file=selectedDrug?.run_file||"haloperidol.json";fetch(`../static_runs/${file}`).then(r=>r.json()).then(installRun).catch(err=>el("searchMessage").textContent=`Could not load ${selectedDrug.name}: ${err}`)};
+  el("runDrug").onclick=runSelectedDrug;
   el("replay").onclick=()=>showSeed();setup3DControls();installRun(data);
 }).catch(err=>el("notice").textContent=`Could not load replay: ${err}`);
