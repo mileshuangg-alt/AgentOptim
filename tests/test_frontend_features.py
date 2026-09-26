@@ -11,11 +11,17 @@ from frontend.science import candidate_reviews, recommended_assays
 
 
 def test_drug_lookup_supports_generic_and_brand_names():
+    from rdkit import Chem
+    from rdkit.Chem import rdMolDescriptors
+
     assert search("haloperidol") == [HALOPERIDOL]
     assert search("Haldol") == [HALOPERIDOL]
     assert search("Advil") == [IBUPROFEN]
     assert IBUPROFEN.optimizable is False
     assert "COX" in IBUPROFEN.limitation
+    assert rdMolDescriptors.CalcMolFormula(
+        Chem.MolFromSmiles(IBUPROFEN.smiles)
+    ) == "C13H18O2"
 
 
 def test_3d_viewer_has_coordinates_and_precise_change_highlights():

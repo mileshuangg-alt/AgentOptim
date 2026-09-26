@@ -1,0 +1,21 @@
+{
+  "source": "https://github.com/tuhinc5203/admet-property-prediction",
+  "source_commit": "75ad64c26461c7fbfc10e3d42ee5b66c59998590",
+  "models": {
+    "solubility_xgb.pkl": {
+      "task": "regression",
+      "output": "LogS",
+      "sha256": "e64912b23819800f4a7b63a72feaf97e9c8c645cc94e2b3882734015be81dd92"
+    },
+    "bbb_xgb.pkl": {
+      "task": "classification",
+      "output": "P(BBB penetrant)",
+      "sha256": "33f62abcb906eca0270f3b57b115ba4f16f61ef348f0bda77aba2ab6632e9268"
+    },
+    "herg_xgb.pkl": {
+      "task": "classification",
+      "output": "P(hERG blockade)",
+      "sha256": "294e6f5253d43f20bf099ef414a02f8993270d326092759c5add215bb7a8d5fe"
+    }
+  }
+}

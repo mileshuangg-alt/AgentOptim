@@ -58,13 +58,14 @@ exactly — largest-fragment salt stripping, 2048-bit Morgan r=2, and six
 descriptors in the order **MolWt, MolLogP, TPSA, NumHDonors, NumHAcceptors,
 NumRotatableBonds**. Note TPSA is third, not last; a reasonable guess at that
 order gets the position wrong and the models return confident nonsense without
-raising. `scripts/verify_models.py` diffs this function against the source
-repo's own to prove equivalence rather than assuming it.
+raising. `scripts/verify_models.py` can execute the source repo's three
+featurization functions and compare their DataFrames directly.
 
-The models are not committed here (see `models/README.md`) — copy them from
-that repo's `models/`. Affinity still falls back to Tanimoto similarity against
-a panel of known DRD2 ligands, because PyTDC's DRD2 oracle downloads from
-`dataverse.harvard.edu`, which this environment blocks.
+The solubility, BBB, and hERG estimators are committed in `models/`. Their
+manifest records the source commit and SHA-256 hashes, and the default
+verification command checks 12 fixed predictions at a tolerance of `1e-6`.
+Affinity still falls back to Tanimoto similarity against a panel of known DRD2
+ligands when PyTDC's DRD2 oracle is unavailable.
 
 ### 1. An absolute hERG veto kills the demo in round 1
 
@@ -84,23 +85,23 @@ discriminates within the series instead of blanketing it.
 ### 1b. The remaining surrogate
 
 Every score record carries `provenance`, the CLI prints a warning, and the UI
-shows a red banner. Do not attach "0.920 ROC-AUC, beats published SOTA" to
-anything on screen until `scripts/verify_models.py` passes — that claim belongs
-to the trained models, not to these stand-ins.
-
-Wiring the real models in:
+shows a banner for any fallback. Verify the committed ADMET models before a
+demo:
 
 ```bash
-cp /path/to/admet-repo/models/*.json models/
-python -m scripts.verify_models --expected expected_predictions.json
-python -m scripts.make_fixtures       # regenerate with real numbers
+python -m scripts.verify_models
 ```
 
-The verification gate exists because a feature-vector mismatch does not crash.
-Wrong descriptor order or a different Morgan radius returns confident floats
-that mean nothing, and every number downstream is void. If it fails, set
-`ADMET_FEATURIZER=module:function` to the source repo's own featurization
-rather than reimplementing it.
+To audit the implementation against a local clone of the source:
+
+```bash
+python -m scripts.verify_models --source-repo /path/to/admet-property-prediction
+```
+
+The gate checks artifact hashes, the estimators' 2,054 stored feature names,
+fixed predictions, and optional exact DataFrame equality with source
+`app.py`. This matters because wrong descriptor order or a different Morgan
+radius can return plausible numbers without raising an error.
 
 ### 2. The Pareto front is not plotted on affinity, and it cannot be
 

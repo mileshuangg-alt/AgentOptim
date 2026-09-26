@@ -5,3 +5,8 @@ __pycache__/
 figures/
 models/*.json
 models/*.pkl
+!models/manifest.json
+!models/expected_predictions.json
+!models/solubility_xgb.pkl
+!models/bbb_xgb.pkl
+!models/herg_xgb.pkl

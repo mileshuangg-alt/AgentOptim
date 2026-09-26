@@ -38,7 +38,10 @@ import json
 import os
 from pathlib import Path
 
-MODELS_DIR = Path(os.environ.get("ADMET_MODELS_DIR", "models"))
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+MODELS_DIR = Path(
+    os.environ.get("ADMET_MODELS_DIR", str(_REPO_ROOT / "models"))
+).expanduser()
 
 MORGAN_RADIUS = 2
 MORGAN_BITS = 2048
@@ -49,11 +52,11 @@ DESCRIPTOR_ORDER = ("MolWt", "MolLogP", "TPSA", "NumHDonors", "NumHAcceptors",
 
 FEATURE_NAMES = [f"fp_{i}" for i in range(MORGAN_BITS)] + list(DESCRIPTOR_ORDER)
 
-# Filenames as the source repo saves them, plus a couple of tolerated aliases.
+# Filenames as the source repo saves them, plus a tolerated pickle alias.
 _MODEL_FILES = {
-    "solubility": ("solubility_xgb.pkl", "solubility.pkl", "solubility.json"),
-    "bbb": ("bbb_xgb.pkl", "bbb.pkl", "bbb.json"),
-    "herg": ("herg_xgb.pkl", "herg.pkl", "herg.json"),
+    "solubility": ("solubility_xgb.pkl", "solubility.pkl"),
+    "bbb": ("bbb_xgb.pkl", "bbb.pkl"),
+    "herg": ("herg_xgb.pkl", "herg.pkl"),
 }
 
 # Reported by the source repo's README, on TDC scaffold splits.
@@ -111,7 +114,10 @@ def featurize(smiles: str):
 
     row = {f"fp_{i}": int(bit) for i, bit in enumerate(bits)}
     for name in DESCRIPTOR_ORDER:
-        row[name] = float(getattr(Descriptors, name)(mol))
+        # Preserve RDKit's native result type. The source app keeps the three
+        # count descriptors as integers and the continuous descriptors as
+        # floats, and the verification gate checks exact DataFrame equality.
+        row[name] = getattr(Descriptors, name)(mol)
     return pd.DataFrame([row], columns=FEATURE_NAMES)
 
 

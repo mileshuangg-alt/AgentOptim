@@ -36,7 +36,7 @@ HALOPERIDOL = Drug(
 IBUPROFEN = Drug(
     name="Ibuprofen",
     aliases=("Advil", "Motrin"),
-    smiles="CC(C)c1ccc(cc1)C(C)C(=O)O",
+    smiles="CC(C)Cc1ccc(cc1)C(C)C(=O)O",
     target="COX-1 / COX-2",
     rationale=(
         "COX-1 and COX-2 catalyse prostaglandin synthesis. Ibuprofen is a "
